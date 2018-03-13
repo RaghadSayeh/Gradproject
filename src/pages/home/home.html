@@ -1,10 +1,105 @@
+
+  
+ <!-- <button ion-button  (click)="logout()">Logout </button>-->
+ <!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color="primary"> 
+  <ion-navbar>
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="navbarLogo" padding >
-  
-  <button ion-button  (click)="logout()">Logout </button>
+
+<ion-content >
+
+
+    <ion-card>
+
+        <img src="assets/imgs/music.png" height="250"> 
+        
+        <ion-item>
+          <ion-icon ios="ios-musical-notes" md="md-musical-notes" item-start large></ion-icon>
+          <h2>A Musical Evening </h2>
+          <p>Broadway theatre</p>
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
+          <h2>8:00 pm - 02:00 am</h2>
+          <p>On Wednesday 18th , July , 2018 </p>
+        </ion-item>
+      
+        <ion-item>
+          <span item-left>18 min</span>
+          
+          <button ion-button icon-left clear item-end (click)="openEventPage()">
+            <ion-icon name="arrow-dropright-circle"></ion-icon>
+            Show
+          </button>
+        </ion-item>
+      
+      </ion-card>
+
+      <ion-card>
+
+        <img src="assets/imgs/chem.png" height="250"> 
+        
+        <ion-item>
+          <ion-icon  name="people" item-start large></ion-icon>
+          <h2>4th International Conference of Chemical Engineering & Industrial Biotechnology </h2>
+           <h2> 2018- EI Compendex and ISI</h2>
+          
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
+          <h2>8:00 pm - 02:00 am</h2>
+          <p>On Wednesday 18th , July , 2018 </p>
+        </ion-item>
+      
+        <ion-item>
+          <span item-left>18 min</span>
+          
+          <button ion-button icon-left clear item-end (click)="openEventPage()">
+            <ion-icon name="arrow-dropright-circle"></ion-icon>
+            Show
+          </button>
+        </ion-item>
+      
+      </ion-card>
+
+
+
+      <ion-card>
+
+        <img src="assets/imgs/wedding.png" height="250"> 
+        
+        <ion-item>
+          <ion-icon  name="people" item-start large></ion-icon>
+          <h2>4th International Conference of Chemical Engineering & Industrial Biotechnology </h2>
+           <h2> 2018- EI Compendex and ISI</h2>
+          
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
+          <h2>8:00 pm - 02:00 am</h2>
+          <p>On Wednesday 18th , July , 2018 </p>
+        </ion-item>
+      
+        <ion-item>
+          <span item-left>18 min</span>
+          
+          <button ion-button icon-left clear item-end (click)="openEventPage()">
+            <ion-icon name="arrow-dropright-circle"></ion-icon>
+            Show
+          </button>
+        </ion-item>
+      
+      </ion-card>
 </ion-content>
+
