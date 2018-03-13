@@ -1,0 +1,24 @@
+<ion-header>
+ <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="login">
+
+<div class="list-form">
+    <div><h1>Welcome Back!</h1></div>
+<ion-list  style="margin-top:30px;margin-bottom: 30px">
+<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+  <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="email" placeholder="Email Address"></ion-input>
+</ion-item>
+<ion-item style="padding:0px !important; font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+  <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+</ion-item>
+</ion-list>
+</div>
+
+<button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="login()">Login</button>
+<div text-center style="text-decoration: underline;margin-top:20px;color:white;font-size: 14px;"  (click)="forgotPwd()">Forgot Password</div>
+  <button ion-button style="background-color: transparent;color:white;border-color:white;border:1px solid white;margin-top:20px;height: 35px;font-size: 14px;"  block  (click)="signUp()">Register</button>
+</ion-content>

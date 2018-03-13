@@ -1,0 +1,31 @@
+page-login {
+       .login{
+           background-image: url("../assets/imgs/3.jpg");
+           background-size:100% 100% 
+       }
+       ::-webkit-input-placeholder {
+        color: white !important; 
+      }
+      :-moz-placeholder {
+        color: white !important; 
+      }
+      :-ms-input-placeholder {
+        /* IE10+ */
+        color: white !important; 
+      }
+      .bw{
+          margin-left: auto;
+          margin-right:auto;
+          display:block
+      }
+      .list-form{
+          margin-top: 50px;
+      }
+      h1{
+        font-size: 20px;
+        margin-top:50px;
+        margin-left:60px
+      }
+      
+
+}

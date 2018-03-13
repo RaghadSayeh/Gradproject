@@ -1,0 +1,23 @@
+page-welcome {
+  #welcome{
+        background-image:url("../assets/imgs/3.jpg");
+        background-size: 100% 100%
+    }
+    .marginTop{
+        margin-top:150px;
+        margin-bottom: 9px
+    }
+    button{
+        display: block;
+        padding: 15px;
+        float: left;
+  width: 50%;
+    }
+    h1{
+        font-style: oblique;
+        //font-family:cursive;
+    }
+    .contact{
+        margin-right:6px;
+    }
+}

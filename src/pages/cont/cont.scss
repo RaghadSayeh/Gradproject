@@ -1,0 +1,26 @@
+page-cont {
+.body1{
+    margin:0px;
+    padding: 0px;
+    text-align: center;
+    background-image:url(../assets/imgs/6.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    }
+    .contact-title{
+        margin-top:22px;
+        color:rgb(5, 48, 97);
+        text-transform: uppercase;
+        transition: all 4s ease-in-out
+    }
+    .contact-title h1{
+        font-size:20px;
+        line-height: 10px
+    }
+    ion-input{
+        width:100%;
+        padding:5px;
+        border-radius:4px;
+    }
+}
