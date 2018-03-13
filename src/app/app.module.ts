@@ -16,6 +16,8 @@ import * as firebase from 'firebase';
 import { HttpClientModule } from '@angular/common/http';
 import { EventsPage } from '../pages/events/events';
 import {EventDetailPage} from '../pages/event-detail/event-detail';
+import { MessagesPage } from '../pages/messages/messages';
+import { ProfilePage } from '../pages/profile/profile';
 
 export const config = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -39,7 +41,9 @@ firebase.initializeApp(config);
     TabsPage,
     ContPage,
     EventsPage,
-    EventDetailPage
+    EventDetailPage,
+    MessagesPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ firebase.initializeApp(config);
     MyApp,
     WelcomePage,
     LoginPage,
+    MessagesPage,
+    ProfilePage,
     SignupPage,
     EventDetailPage,
     AboutPage,

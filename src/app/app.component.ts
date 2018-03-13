@@ -8,6 +8,9 @@ import { LoginPage } from '../pages/login/login';
 import { EventsPage } from '../pages/events/events';
 import * as firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
+import {EventDetailPage} from '../pages/event-detail/event-detail';
+import {ProfilePage} from '../pages/profile/profile';
+import {MessagesPage} from '../pages/messages/messages';
 
 @Component({
   templateUrl: 'app.html'
