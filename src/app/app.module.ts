@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import * as firebase from 'firebase';
 import { HttpClientModule } from '@angular/common/http';
 import { EventsPage } from '../pages/events/events';
+import {EventDetailPage} from '../pages/event-detail/event-detail';
 
 export const config = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -37,7 +38,8 @@ firebase.initializeApp(config);
     HomePage,
     TabsPage,
     ContPage,
-    EventsPage
+    EventsPage,
+    EventDetailPage
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ firebase.initializeApp(config);
     WelcomePage,
     LoginPage,
     SignupPage,
+    EventDetailPage,
     AboutPage,
     ContactPage,
     HomePage,

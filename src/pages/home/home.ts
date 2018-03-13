@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,App} from 'ionic-angular';
-//import { WelcomePage } from '../welcome/welcome';
+import {EventDetailPage} from '../event-detail/event-detail';
 
 @Component({
   selector: 'page-home',
@@ -17,4 +17,8 @@ export class HomePage {
     //root.popToRoot();
     this.navCtrl.push(WelcomePage);
 }*/
+
+openEventPage(){
+  this.navCtrl.push(EventDetailPage);
+}
 }
