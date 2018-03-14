@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import {EventDetailPage} from '../pages/event-detail/event-detail';
 import {ProfilePage} from '../pages/profile/profile';
 import {MessagesPage} from '../pages/messages/messages';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,14 +24,13 @@ export class MyApp {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         //User is signed in
-       // that.rootPage=HomePage;
+        that.rootPage=TabsPage;
         
       } else {
         // User is signed out.
         // ...
-        //that.rootPage=LoginPage;
-        
-      }
+        that.rootPage=WelcomePage;
+        }
     });
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

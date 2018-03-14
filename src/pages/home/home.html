@@ -9,18 +9,18 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title style="padding-left:0px;margin-left:0px;">Home</ion-title>
+    <ion-buttons start (click)="Logout()">
+       <button><ion-icon style="padding-right:4px" name="log-out"></ion-icon>
+      Logout</button> 
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content >
-
-
     <ion-card>
-
         <img src="assets/imgs/music.png" height="250"> 
-        
         <ion-item>
           <ion-icon ios="ios-musical-notes" md="md-musical-notes" item-start large></ion-icon>
           <h2>A Musical Evening </h2>
