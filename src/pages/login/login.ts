@@ -22,6 +22,7 @@ export class LoginPage {
   public email: string;
   public password: string;
 
+  
   constructor(public usersService : UsersserviceProvider,  public loadingCtrl: LoadingController, public toastCtrl: ToastController,   public navCtrl: NavController, public navParams: NavParams) {
   }
   
