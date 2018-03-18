@@ -18,6 +18,8 @@ import { EventsPage } from '../pages/events/events';
 import {EventDetailPage} from '../pages/event-detail/event-detail';
 import { MessagesPage } from '../pages/messages/messages';
 import { ProfilePage } from '../pages/profile/profile';
+import {FollwersPage} from '../pages/follwers/follwers';
+import {InterestsPage} from '../pages/interests/interests';
 
 export const config = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -43,7 +45,9 @@ firebase.initializeApp(config);
     EventsPage,
     EventDetailPage,
     MessagesPage,
-    ProfilePage
+    ProfilePage,
+    FollwersPage,
+    InterestsPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ firebase.initializeApp(config);
     HomePage,
     TabsPage,
     ContPage,
-    EventsPage
+    EventsPage,
+    FollwersPage,
+    InterestsPage
   ],
   providers: [
     StatusBar,

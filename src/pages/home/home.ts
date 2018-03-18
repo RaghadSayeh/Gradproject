@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,App,IonicPage, LoadingController, ToastController,NavParams } from 'ionic-angular';
+import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController } from 'ionic-angular';
 import {EventDetailPage} from '../event-detail/event-detail';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import * as firebase from 'firebase';
@@ -12,7 +12,7 @@ import { WelcomePage } from '../welcome/welcome';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public app: App,public USerserviceProvider : UsersserviceProvider) {
+  constructor(public menuCtrl: MenuController,public navCtrl: NavController, public app: App,public USerserviceProvider : UsersserviceProvider) {
 
   }
   /*logout(){
@@ -31,6 +31,8 @@ Logout(){
   }
 
   );
+ }
  
-}
+
+
 }

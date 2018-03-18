@@ -1,1 +1,12 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+ <!--<ion-content padding>
+   <ion-list>
+    <p>some menu content , could be list items</p>
+  </ion-list>
+ </ion-content-->
+
+<button  menu-close ion-item (click)="goToFolls()">Followers</button>
+<button  menu-close ion-item (click)="GoToInter()">Your interests</button>
+<button ion-item menu-close (click)="Logout()">Logout</button>
+</ion-menu>
+<ion-nav #content [root]="rootPage"></ion-nav>
