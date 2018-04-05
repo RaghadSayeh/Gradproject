@@ -8,6 +8,7 @@ import * as firebase from 'firebase';
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
 @Injectable()
 export class UsersserviceProvider {
   public data: any;
@@ -15,6 +16,7 @@ export class UsersserviceProvider {
   public userProfile: any;
   public forCont: any;
   public forEvent: any;
+  
 
   constructor(public http: HttpClient) {
     this.fireAuth = firebase.auth();
