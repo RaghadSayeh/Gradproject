@@ -1,37 +1,37 @@
 import { Component } from '@angular/core';
 import {  IonicPage, NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
-import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
+//import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import * as firebase from 'firebase';
 import { HomePage } from '../home/home';
-
-//toastController :give me if there is an error in signup or login operation
-//loadingController :it is a circle indication to wait until login or signup operation done
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { User } from '../../models/user';
+import {AngularFireAuth} from "angularfire2/auth";
 
 @IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
-  providers: [UsersserviceProvider]
+ // providers: [UsersserviceProvider]
 })
 export class SignupPage {
 
+  user = {} as User;
+
+
+/*
   public firstname : any;
   public lastname : any;
   public email : string;
   public password : any;
   public interests : string;
-  
+  */
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public usersserviceProvider : UsersserviceProvider, 
-    public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    public navCtrl: NavController, public navParams: NavParams
+    //public usersserviceProvider : UsersserviceProvider, 
+    //public toastCtrl: ToastController, public loadingCtrl: LoadingController
+  ) {
   }
 
   ionViewDidLoad() {
@@ -40,10 +40,23 @@ export class SignupPage {
 
   //this signup function collects the form, saves everything inside the objec(account)
   //then passes the objects to the userService
-  dosignup(){
+  async dosignup(user: User){
+    try{
+    const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+    console.log(result);
+    this.navCtrl.push(HomePage);
+    }
+    catch(e){
+      console.error(e);
+    }
+
+
+
+
+
     //Api connections
    // this.navCtrl.push(TabsPage);
-   var   account = {
+  /* var   account = {
     first_name: this.firstname,
     last_name: this.lastname || '',
     interests: this.interests || '',
@@ -76,5 +89,9 @@ loader.dismiss();
   that.password = ""//empty the password field
 });
 
-    }
+  */
+
+
+
+}
 }

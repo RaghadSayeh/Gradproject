@@ -4,7 +4,10 @@ import { TabsPage } from '../tabs/tabs';
 import * as firebase from 'firebase';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
-import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
+import { User } from '../../models/user';
+import {AngularFireAuth} from "angularfire2/auth";
+import { ProfilePage } from '../profile/profile';
+//import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 /**
  * Generated class for the LoginPage page.
  *
@@ -16,23 +19,44 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [UsersserviceProvider]
+  //providers: [UsersserviceProvider]
 })
 export class LoginPage {
-  public email: string;
-  public password: string;
+  //public email: string;
+  //public password: string;
 
+  user = {} as User ;
   
-  constructor(public usersService : UsersserviceProvider,  public loadingCtrl: LoadingController, public toastCtrl: ToastController,   public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor( private afAuth: AngularFireAuth,
+     public loadingCtrl: LoadingController,
+      public toastCtrl: ToastController, 
+        public navCtrl: NavController,
+         public navParams: NavParams) {
+    }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  login(){
+  async login(user: User){
+    try {
+      const result=  this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      .then(data => {
+        console.log('got some data', this.afAuth.auth.currentUser);
+       // this.alert('Success! You\'re logged in');
+        this.navCtrl.push(HomePage);
+      });
+     }
+     catch(e){
+       console.error(e);
+     }
+  }
+
+
+
+
     // Your app login API web service call triggers 
     //this.navCtrl.push(TabsPage, {}, {animate: false});
-    var that = this;
+    /*var that = this;
     
     var loader = this.loadingCtrl.create({
           content: "Please wait..."
@@ -57,9 +81,10 @@ export class LoginPage {
     
     that.password = ""//empty the password field
     
-        });
+        });*/
+        
     
-  }
+  
   forgotPwd(){
     
   }

@@ -9,21 +9,26 @@
         <div><h1>Sign Up for Free</h1></div>
     <ion-list  style="margin-top:30px;margin-bottom: 30px">
     <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-      <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="firstname" name="firstname" placeholder="FirstName"><ion-icon class="ico" name="person"></ion-icon></ion-input>
+      <ion-label floating>First Name</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.firstname" name="firstname" ><ion-icon class="ico" name="person"></ion-icon></ion-input>
     </ion-item>
     <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-        <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="lastname" name="lastname" placeholder="LastName"></ion-input>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.lastname" name="lastname" ></ion-input>
       </ion-item>
     <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-        <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="email" [(ngModel)]="email" name="email" placeholder="Email"></ion-input>
+      <ion-label floating>Email</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="email" [(ngModel)]="user.email" name="email" ></ion-input>
       </ion-item>
     <ion-item style="padding:0px !important; border-bottom:none !important ;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-      <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="password" [(ngModel)]="password" name="password" placeholder="Password"></ion-input>
+      <ion-label floating>Password</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="password" [(ngModel)]="user.password" name="password" ></ion-input>
     </ion-item>
     <ion-item style="padding:0px !important; font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-        <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="interests" name="interests" placeholder="Your interests"></ion-input>
+      <ion-label floating>Interests</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.interests" name="interests" ></ion-input>
       </ion-item>
     </ion-list>
-    <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="dosignup()">Sign Up</button>
+    <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="dosignup(user)">Sign Up</button>
     </div>
  </ion-content>

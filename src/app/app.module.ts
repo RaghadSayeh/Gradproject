@@ -20,22 +20,28 @@ import { MessagesPage } from '../pages/messages/messages';
 import { ProfilePage } from '../pages/profile/profile';
 import {FollwersPage} from '../pages/follwers/follwers';
 import {InterestsPage} from '../pages/interests/interests';
+import { HttpModule} from "@angular/http";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
+import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
+//import { LoginPageModule } from '../pages/login/login.module';
 
-export const config = {
+
+const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
   authDomain: "mygradpro-8c6e7.firebaseapp.com",
   databaseURL: "https://mygradpro-8c6e7.firebaseio.com",
   projectId: "mygradpro-8c6e7",
   storageBucket: "mygradpro-8c6e7.appspot.com",
   messagingSenderId: "130340074057"
-};
-firebase.initializeApp(config);
+};firebase.initializeApp(firebaseConfig);
+
 
 @NgModule({
   declarations: [
     MyApp,
     WelcomePage,
-    LoginPage,
+   LoginPage,
     SignupPage,
     AboutPage,
     ContactPage,
@@ -51,8 +57,16 @@ firebase.initializeApp(config);
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+
+    AngularFireDatabaseModule,
+    AngularFireModule,
+    AngularFireAuthModule
+    //LoginPageModule 
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,6 +87,8 @@ firebase.initializeApp(config);
     InterestsPage
   ],
   providers: [
+    AngularFireAuth,
+    AngularFireDatabase,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

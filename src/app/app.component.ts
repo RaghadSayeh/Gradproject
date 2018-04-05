@@ -27,12 +27,14 @@ export class MyApp {
   //public pages: Array<{title:string, Component: any}>;
 
 
-  constructor( platform: Platform,statusBar: StatusBar, splashScreen: SplashScreen) {
-    /*this.initializeApp();
-    this.pages = [
+  constructor( public platform: Platform, public statusBar: StatusBar,
+    public splashScreen: SplashScreen) {
+   this.initializeApp();
+    /*this.pages = [
       { title:'Home', Component: HomePage},
       { title :'Follwers', Component: FollwersPage}
     ];*/
+    /*
     var that = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -51,8 +53,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    
-  }
+    */
+  
  /* goToFolls(){
     this.navCtrl.push(FollwersPage);
   }*/
@@ -68,5 +70,13 @@ export class MyApp {
  /* openPage(page){
     this.nav.setRoot(page.Component);
   }*/
-  
+}
+initializeApp() {
+  this.platform.ready().then(() => {
+    // Okay, so the platform is ready and our plugins are available.
+    // Here you can do any higher level native things you might need.
+    this.statusBar.styleDefault();
+    this.splashScreen.hide();
+  });
+}
 }
