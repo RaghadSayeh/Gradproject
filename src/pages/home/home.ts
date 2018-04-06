@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController } from 'ionic-angular';
 import {EventDetailPage} from '../event-detail/event-detail';
 import * as firebase from 'firebase';
-import {AngularFireAuth} from "angularfire2/auth";
+//import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 
@@ -14,8 +14,8 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 export class HomePage {
   USerserviceProvider: any;
 
-  constructor(private afAuth: AngularFireAuth ,
-    private toast: ToastController,
+  constructor(//private afAuth: AngularFireAuth ,
+    //private toast: ToastController,
     public menuCtrl: MenuController,
     public navCtrl: NavController,
      public app: App
@@ -24,11 +24,12 @@ export class HomePage {
   }
 
   ionViewWillLoad(){
+    /*
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
       this.toast.create(
         {
-          message: 'Welcome to Evento, ${data.email}',
+          message: 'Welcome to Evento , ${data.email}',       
           duration: 3000
         }).present();
        }
@@ -41,7 +42,7 @@ export class HomePage {
           }).present();
        }
       }
-  );
+  );*/
   }
   /*logout(){
     // Remove API token 

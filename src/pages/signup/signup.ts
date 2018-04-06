@@ -2,9 +2,13 @@ import { Component } from '@angular/core';
 import {  IonicPage, NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import * as firebase from 'firebase';
-import { HomePage } from '../home/home';
+//import { HomePage } from '../home/home';
+import {LoginPage} from '../login/login';
+
 import { User } from '../../models/user';
 import {AngularFireAuth} from "angularfire2/auth";
+import { AngularFireDatabase } from 'angularfire2/database';
+import { auth } from 'firebase';
 
 @IonicPage()
 @Component({
@@ -28,6 +32,7 @@ export class SignupPage {
 
   constructor(
     private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, public navParams: NavParams
     //public usersserviceProvider : UsersserviceProvider, 
     //public toastCtrl: ToastController, public loadingCtrl: LoadingController
@@ -44,7 +49,11 @@ export class SignupPage {
     try{
     const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
     console.log(result);
-    this.navCtrl.push(HomePage);
+    this.afAuth.authState.subscribe(auth =>{
+      this.afDatabase.object('user/'+ auth.uid).set(this.user)
+      .then(() => this.navCtrl.setRoot(LoginPage))
+    })
+    //this.navCtrl.push(LoginPage);
     }
     catch(e){
       console.error(e);

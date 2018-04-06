@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+
 import * as firebase from 'firebase';
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { User } from '../../models/user';
 import {AngularFireAuth} from "angularfire2/auth";
 import { ProfilePage } from '../profile/profile';
+import {TabsPage} from '../tabs/tabs';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 /**
  * Generated class for the LoginPage page.
@@ -43,7 +44,7 @@ export class LoginPage {
       .then(data => {
         console.log('got some data', this.afAuth.auth.currentUser);
        // this.alert('Success! You\'re logged in');
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push(TabsPage);
       });
      }
      catch(e){

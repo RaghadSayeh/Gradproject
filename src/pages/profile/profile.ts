@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { User } from '../../models/user';
+import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireObject }  from 'angularfire2/database';
 
 /**
  * Generated class for the ProfilePage page.
@@ -15,11 +20,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userData : FirebaseObjectObservable<User>
+  
+  constructor(public navCtrl: NavController,
+    private afAuth: AngularFireAuth ,
+    private afDatabase: AngularFireDatabase,
+     public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+
+    this.afAuth.authState.subscribe(data =>{
+      if(data && data.email && data.uid){
+        this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+       }
+      
+      
+      }
+  );
   }
 
 }

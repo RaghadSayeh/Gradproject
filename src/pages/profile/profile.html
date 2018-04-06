@@ -20,8 +20,9 @@
   </div>
 </div>
 <div class="profile-content">
-  <h2>Azza Abdulghani</h2>
-  <h4>Computer Engineer, Palestine</h4>
+  <h2>{{(userData | async)?.firstname}}</h2>
+  <h2>  {{(userData | async)?.lasttname}} </h2>
+  <h4>{{(userData | async)?.interests}}</h4>
   
 </div>
 </ion-content>
