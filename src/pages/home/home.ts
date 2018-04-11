@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController } from 'ionic-angular';
 import {EventDetailPage} from '../event-detail/event-detail';
 import * as firebase from 'firebase';
-//import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 
@@ -14,7 +14,7 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 export class HomePage {
   USerserviceProvider: any;
 
-  constructor(//private afAuth: AngularFireAuth ,
+  constructor(private afAuth: AngularFireAuth ,
     //private toast: ToastController,
     public menuCtrl: MenuController,
     public navCtrl: NavController,
@@ -55,11 +55,8 @@ openEventPage(){
   this.navCtrl.push(EventDetailPage);
 }
 Logout(){
-  this.USerserviceProvider.logoutService().then(()=>{
-    this.navCtrl.setRoot(WelcomePage);
-  }
-
-  );
+    this.afAuth.auth.signOut();
+   this.navCtrl.setRoot(WelcomePage);
  }
  
 
