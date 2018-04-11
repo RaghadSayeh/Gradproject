@@ -14,6 +14,7 @@ import {MessagesPage} from '../pages/messages/messages';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FollwersPage } from '../pages/follwers/follwers';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
+import { MyCalenderPage} from '../pages/my-calender/my-calender';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 
 
@@ -21,19 +22,20 @@ import { NavController } from 'ionic-angular/navigation/nav-controller';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
   rootPage:any = WelcomePage;
- // @ViewChild(Nav) nav : Nav;
-  
-  //public pages: Array<{title:string, Component: any}>;
-
-
+  activePage: any;
+  pages: Array<{title: string, component :any}>;
+ 
   constructor( public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen) {
    this.initializeApp();
-    /*this.pages = [
-      { title:'Home', Component: HomePage},
-      { title :'Follwers', Component: FollwersPage}
-    ];*/
+    this.pages = [
+      { title:'Home', component: HomePage},
+      { title:'MyCalender', component: MyCalenderPage},
+      { title :'Follwers', component: FollwersPage}
+    ];
+   // this.activePage=this.pages[0];
     /*
     var that = this;
     firebase.auth().onAuthStateChanged(function(user) {
@@ -54,10 +56,6 @@ export class MyApp {
       splashScreen.hide();
     });
     */
-  
- /* goToFolls(){
-    this.navCtrl.push(FollwersPage);
-  }*/
  /* initializeApp(){
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -66,11 +64,15 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }*/
-
- /* openPage(page){
-    this.nav.setRoot(page.Component);
-  }*/
 }
+  openPage(pages){
+    this.nav.setRoot(pages.component);
+    this.activePage = pages;
+  }
+  /*checkActive(pages){
+    return pages == this.activePage;
+  }*/
+
 initializeApp() {
   this.platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.

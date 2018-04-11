@@ -24,6 +24,7 @@ import { HttpModule} from "@angular/http";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
+import { MyCalenderPage } from '../pages/my-calender/my-calender';
 //import { LoginPageModule } from '../pages/login/login.module';
 
 
@@ -53,7 +54,8 @@ const firebaseConfig = {
     MessagesPage,
     ProfilePage,
     FollwersPage,
-    InterestsPage
+    InterestsPage,
+    MyCalenderPage
   ],
   imports: [
     BrowserModule,
@@ -61,11 +63,9 @@ const firebaseConfig = {
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-
     AngularFireDatabaseModule,
     AngularFireModule,
     AngularFireAuthModule
-    //LoginPageModule 
     
   ],
   bootstrap: [IonicApp],
@@ -84,7 +84,8 @@ const firebaseConfig = {
     ContPage,
     EventsPage,
     FollwersPage,
-    InterestsPage
+    InterestsPage,
+    MyCalenderPage
   ],
   providers: [
     AngularFireAuth,
