@@ -15,17 +15,17 @@ import { AngularFireObject }  from 'angularfire2/database';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
+  selector: 'page-profile' ,
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
 
   userData : FirebaseObjectObservable<User>
   
-  constructor(public navCtrl: NavController,
+  constructor( public navCtrl: NavController,
     private afAuth: AngularFireAuth ,
     private afDatabase: AngularFireDatabase,
-     public navParams: NavParams) {
+     public navParams: NavParams)  { 
   }
 
   ionViewDidLoad() {
