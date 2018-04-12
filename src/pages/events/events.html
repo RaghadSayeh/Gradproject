@@ -92,6 +92,9 @@
                 <ion-label style="padding-left:10px">Paid</ion-label>
                   <ion-toggle  checked="false" [(ngModel)]="Paid"></ion-toggle>
                 </ion-item>
+                <ion-item>
+                <button ion-button block (click)="choose()">Upload image</button>
+              </ion-item>
     </ion-list>
 <button ion-button block  outline style="color:white;border-color:white"  (click)="createE()">Create</button>
   </div>

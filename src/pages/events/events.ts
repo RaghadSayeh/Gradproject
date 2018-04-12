@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController,ToastController,AlertController} from 'ionic-angular';
 import * as firebase from 'firebase';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
-/**
- * Generated class for the EventsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {FileChooser} from '@ionic-native/file-chooser';
+import {File} from '@ionic-native/file';
 
 @IonicPage()
 @Component({
@@ -29,7 +25,7 @@ export class EventsPage {
 
 
   constructor(public eventServices : UsersserviceProvider,public navCtrl: NavController, public navParams: NavParams,public laodctrl: LoadingController,public toastctrl:ToastController,public alertctrl:
-  AlertController) {
+  AlertController, private filechooser: FileChooser, private file:File) {
 
     this.eventInfo =firebase.database().ref('eventinfo');
   }
@@ -78,5 +74,37 @@ export class EventsPage {
 
      
   }
+  choose(){
+    this.filechooser.open().then((uri)=>{
+      alert(uri);
 
+      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
+        alert(JSON.stringify(newUrl));
+
+        let dirPath=newUrl.nativeURL;
+        let dirPathSegments=dirPath.split('/')
+        dirPathSegments.pop()
+        dirPath=dirPathSegments.join('/')
+
+        this.file.readAsArrayBuffer(dirPath,newUrl.name).then(async (buffer)=>{
+          await this.upload(buffer,newUrl.name);
+        })
+      }
+    )
+
+    }
+  )
+  }//choose fcn
+ async upload(buffer,name){
+  //blob is a special data structure which is used to transfer file  from one place to another
+  let blob=new Blob([buffer], {type:"image/jpeg"}); 
+
+  let storage=firebase.storage();
+  storage.ref('/images'+name).put(blob).then((d)=>{
+    alert("Done");
+  }).catch((error)=>{
+    alert(JSON.stringify(error));
+  })
+
+}
 }

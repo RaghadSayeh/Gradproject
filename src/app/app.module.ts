@@ -25,7 +25,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
 import { MyCalenderPage } from '../pages/my-calender/my-calender';
-//import { LoginPageModule } from '../pages/login/login.module';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 
 
 const firebaseConfig = {
@@ -91,7 +92,7 @@ const firebaseConfig = {
     AngularFireAuth,
     AngularFireDatabase,
     StatusBar,
-    SplashScreen,
+    SplashScreen,FileChooser,File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
