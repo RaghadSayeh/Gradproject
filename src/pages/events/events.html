@@ -3,39 +3,53 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-image:url('../assets/imgs/12.jpg');background-size:cover">
+<ion-content padding style="background-image:url('../assets/imgs/10.jpg');background-size:cover">
   <div class="design-event">
     <ion-list style="margin-top:20px;margin-bottom:15px;padding:5px;">
       <!--item1-->
          <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;">
-          <ion-label style="padding-left:10px">Company name</ion-label> 
-          <ion-input  style="background-color:transparent;" type="text" [(ngModel)]="Cname"></ion-input>
+          <ion-label style="padding-left:10px">Event Name</ion-label> 
+          <ion-input  style="background-color:transparent;" type="text" [(ngModel)]="event.name"></ion-input>
          </ion-item>
          <!--item2-->
          <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;">
             <ion-label style="padding-left:10px">Email Addr</ion-label> 
-            <ion-input  style="background-color:transparent;" type="text" [(ngModel)]="Cemail"></ion-input>
+            <ion-input  style="background-color:transparent;" type="email" [(ngModel)]="event.email"></ion-input>
            </ion-item>
           <!--item3-->
+          <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;">
+            <ion-label style="padding-left:10px">Event Description</ion-label> 
+            <ion-input  style="background-color:transparent;" type="text" [(ngModel)]="event.desc"></ion-input>
+           </ion-item>
+
          <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
             <ion-label  style="padding-left:10px">Subject</ion-label> 
-          <ion-select [(ngModel)]="subject">
-              <ion-option value="sp" selected>Sport</ion-option>
-              <ion-option value="fa">Fashion</ion-option>
-              <ion-option value="mu">Music</ion-option>
-              <ion-option value="sc">Science</ion-option>
-              <ion-option value="te">Technology</ion-option>
-              <ion-option value="ar">Art</ion-option>
-              <ion-option value="bu">Business</ion-option>
-              <ion-option value="co">Community</ion-option>
-              <ion-option value="cu">Culture</ion-option>
-              <ion-option value="ot">Other</ion-option>
+          <ion-select [(ngModel)]="event.type">
+              <ion-option value="sport" selected>Sport</ion-option>
+              <ion-option value="fashion">Fashion</ion-option>
+              <ion-option value="music">Music</ion-option>
+              <ion-option value="science">Science</ion-option>
+              <ion-option value="technlogy">Technology</ion-option>
+              <ion-option value="art">Art</ion-option>
+              <ion-option value="business">Business</ion-option>
+              <ion-option value="community">Political</ion-option>
+              <ion-option value="culture">Culture</ion-option>
+              <ion-option value="weddings">Weddings</ion-option>
             </ion-select>
           </ion-item>
            <!--item4-->
          <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">     
               <ion-label style="padding-left:10px" >Date</ion-label> 
-            <ion-select [(ngModel)]="Month">
+              <ion-select [(ngModel)]="event.day">
+                <ion-option value="sa" selected>Saturday</ion-option>
+                <ion-option value="su">Sunday</ion-option>
+                <ion-option value="mo">Monday</ion-option>
+                <ion-option value="tu">Tuesday</ion-option>
+                <ion-option value="we">Wednesday</ion-option>
+                <ion-option value="th">Thursday</ion-option>
+                <ion-option value="fr">Friday</ion-option>
+              </ion-select>
+            <ion-select [(ngModel)]="event.month">
               <ion-option value="j" selected>January</ion-option>
               <ion-option value="f">February</ion-option>
               <ion-option value="m">March</ion-option>
@@ -49,7 +63,7 @@
               <ion-option value="n">November</ion-option>
               <ion-option value="d">December</ion-option>
              </ion-select>
-             <ion-select [(ngModel)]="Year">
+             <ion-select [(ngModel)]="event.year">
                 <ion-option value="1" selected>2012</ion-option>
                 <ion-option value="2">2013</ion-option>
                 <ion-option value="3">2014</ion-option>
@@ -65,34 +79,39 @@
                </ion-select>
             </ion-item>
              <!--item5-->
-            <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
-                <ion-label  style="padding-left:10px">Day</ion-label>
-                <ion-select [(ngModel)]="Day">
-                  <ion-option value="sa" selected>Saturday</ion-option>
-                  <ion-option value="su">Sunday</ion-option>
-                  <ion-option value="mo">Monday</ion-option>
-                  <ion-option value="tu">Tuesday</ion-option>
-                  <ion-option value="we">Wednesday</ion-option>
-                  <ion-option value="th">Thursday</ion-option>
-                  <ion-option value="fr">Friday</ion-option>
-                </ion-select>
+             <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
+              <ion-label style="padding-left:10px">Time</ion-label>  
+              <ion-input type="text" [(ngModel)]="event.time"></ion-input>
               </ion-item>
                <!--item6-->
+               <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
+                <ion-label style="padding-left:10px">City</ion-label>  
+                <ion-input type="text" [(ngModel)]="event.city"></ion-input>
+                </ion-item>
             <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
-              <ion-label style="padding-left:10px">Place</ion-label>  
-              <ion-input type="text" [(ngModel)]="place"></ion-input>
+              <ion-label style="padding-left:10px">Location</ion-label>  
+              <ion-input type="text" [(ngModel)]="event.location"></ion-input>
               </ion-item>
                <!--item7-->
               <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
-                <ion-label style="padding-left:10px">City</ion-label>
-                <ion-input type="text" [(ngModel)]="city"></ion-input>
+                <ion-label style="padding-left:10px">Event Photo</ion-label>
+                <ion-input type="text" [(ngModel)]="event.photo"></ion-input>
                 </ion-item>
                  <!--item8-->
               <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
                 <ion-label style="padding-left:10px">Paid</ion-label>
-                  <ion-toggle  checked="false" [(ngModel)]="Paid"></ion-toggle>
+                  <ion-toggle  checked="false" [(ngModel)]="event.paid"></ion-toggle>
                 </ion-item>
+              <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
+                <ion-label style="padding-left:10px">Price</ion-label>  
+                <ion-input type="text" [(ngModel)]="event.price"></ion-input>
+              </ion-item>
+              <ion-item style="padding:0px !important;font-size: 14px;margin-top:10px;margin-bottom:7px;box-shadow:rgba(0,0,255,0.5)">
+                  <ion-label style="padding-left:10px">Max.Number of Attendees</ion-label>  
+                  <ion-input type="number" [(ngModel)]="event.maxnumber"></ion-input>
+              </ion-item>
+                
     </ion-list>
-<button ion-button block  outline style="color:white;border-color:white"  (click)="createE()">Create</button>
+<button ion-button block  outline style="color:white;border-color:white"  (click)="createE(event)">Create</button>
   </div>
 </ion-content>

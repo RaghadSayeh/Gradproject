@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController,ToastController,AlertController} from 'ionic-angular';
 import * as firebase from 'firebase';
-import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
+import { Event } from '../../models/eventDet';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { WelcomePage } from '../welcome/welcome';
+//import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 /**
  * Generated class for the EventsPage page.
  *
@@ -12,32 +15,50 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 @IonicPage()
 @Component({
   selector: 'page-events',
-  templateUrl: 'events.html',
-  providers: [UsersserviceProvider]
+  templateUrl: 'events.html'
+ // providers: [UsersserviceProvider]
 })
 export class EventsPage {
-  public Cname: any;
-  public Cemail: any;
-  public subject: string;
-  public Month: any;
-  public Year: any;
-  public Day: any;
-  public place: any;
-  public city: any;
-  public eventInfo : any;
-  //public Paid: boolean;
+
+  event = {} as Event ;
 
 
-  constructor(public eventServices : UsersserviceProvider,public navCtrl: NavController, public navParams: NavParams,public laodctrl: LoadingController,public toastctrl:ToastController,public alertctrl:
+  arrData = [];
+  arrDataId ;
+
+  constructor(
+    private afDatabase: AngularFireDatabase,
+    public navCtrl: NavController,
+     public navParams: NavParams,
+     public laodctrl: LoadingController,
+     public toastctrl:ToastController,
+     public alertctrl:
   AlertController) {
+    this.afDatabase.list("/event/").valueChanges().subscribe(
+      _data => {
+        this.arrData = _data ; 
+        this.arrDataId = this.arrData.length ;
+      }
+    );
 
-    this.eventInfo =firebase.database().ref('eventinfo');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsPage');
   }
-  createE(){
+
+
+  createE(event: Event){
+
+    this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
+    //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
+    
+  }
+
+
+
+
+  /*createE(){
     var   account2 = {
       Cname: this.Cname || '',
       Cemail: this.Cemail || '',
@@ -50,9 +71,8 @@ export class EventsPage {
       //Paid :this.Paid
      };
      var that=this;
-    /* this.eventInfo.child().set({
-       account2
-     });*/
+   
+     });
      this.eventServices.writeEventInfo(account2).then(authData =>{
       let alert = this.alertctrl.create(
         {
@@ -77,6 +97,6 @@ export class EventsPage {
       });
 
      
-  }
+  }*/
 
 }

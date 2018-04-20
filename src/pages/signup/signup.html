@@ -24,11 +24,9 @@
       <ion-label floating>Password</ion-label>
       <ion-input style="border-bottom-color:white;box-shadow:none;" type="password" [(ngModel)]="user.password" name="password" ></ion-input>
     </ion-item>
-    <ion-item style="padding:0px !important; font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-      <ion-label floating>Interests</ion-label>
-      <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.interests" name="interests" ></ion-input>
-      </ion-item>
+    
     </ion-list>
+    <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="chooseInterests(user)">Choose Interests</button>
     <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="dosignup(user)">Sign Up</button>
     </div>
  </ion-content>

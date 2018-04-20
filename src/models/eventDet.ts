@@ -8,9 +8,10 @@ export interface Event {
     day: string;
     month: string;
     year: string;
-    place : string;
+    location : string;
     city: string;
     photo : URL ;
     paid: boolean ;
-    price: string;   
+    price: string;  
+    maxnumber: string ; 
 }

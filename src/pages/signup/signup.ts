@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  IonicPage, NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
+import {  IonicPage, NavController, LoadingController, ToastController, NavParams, AlertController } from 'ionic-angular';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import * as firebase from 'firebase';
 //import { HomePage } from '../home/home';
@@ -20,20 +20,16 @@ export class SignupPage {
 
   user = {} as User;
 
+  testCheckboxOpen: boolean;
+  testCheckboxResult;
 
-/*
-  public firstname : any;
-  public lastname : any;
-  public email : string;
-  public password : any;
-  public interests : string;
-  */
-  
 
   constructor(
     private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
-    public navCtrl: NavController, public navParams: NavParams
+    public navCtrl: NavController, public navParams: NavParams,
+    public alertctrl:AlertController
+    
     //public usersserviceProvider : UsersserviceProvider, 
     //public toastCtrl: ToastController, public loadingCtrl: LoadingController
   ) {
@@ -58,6 +54,79 @@ export class SignupPage {
     catch(e){
       console.error(e);
     }
+  }
+
+    chooseInterests(user: User){
+      let alert = this.alertctrl.create();
+    alert.setTitle('Which Interests do you want to follow?');
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Sport',
+      value: 'sport',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Fashion',
+      value: 'fashion'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Music',
+      value: 'music'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Science',
+      value: 'science'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Technology',
+      value: 'technology'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Art',
+      value: 'art'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Business',
+      value: 'business'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Political',
+      value: 'political'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Culture',
+      value: 'culture'
+    });
+    alert.addInput({
+      type: 'checkbox',
+      label: 'Weddings',
+      value: 'weddings'
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        user.interests = data ;
+        console.log('Checkbox data:', data);
+        this.testCheckboxOpen = false;
+        this.testCheckboxResult = data;
+      }
+    });
+    alert.present();
+  }
+
+    
 
 
 
@@ -102,5 +171,5 @@ loader.dismiss();
 
 
 
-}
+
 }
