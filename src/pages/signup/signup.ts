@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import {  IonicPage, NavController, LoadingController, ToastController, NavParams, AlertController } from 'ionic-angular';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
-=======
-import {  IonicPage, NavController, LoadingController, ToastController, NavParams } from 'ionic-angular';
->>>>>>> 26f3aadb03524eea9121ee128630be70c06dfb78
 import * as firebase from 'firebase';
 import {LoginPage} from '../login/login';
 
@@ -134,43 +130,6 @@ export class SignupPage {
 
 
 
-
-    //Api connections
-   // this.navCtrl.push(TabsPage);
-  /* var   account = {
-    first_name: this.firstname,
-    last_name: this.lastname || '',
-    interests: this.interests || '',
-    email: this.email,
-    password: this.password
-   };
-var that = this;
-var loader = this.loadingCtrl.create({
-  content: "Please wait...",
-  
-});
-loader.present();
-
-
-this.usersserviceProvider.signupUserService(account).then(authData => {
-  //successful
-  loader.dismiss();
-  that.navCtrl.setRoot(HomePage);
-  //note:there is a difference between push and setRoot
-}, error => {
-loader.dismiss();
- // Unable to log in
-  let toast = this.toastCtrl.create({
-    message: error,
-    duration: 3000,
-    position: 'top'
-  });
-  toast.present();
-
-  that.password = ""//empty the password field
-});
-
-  */
 
 
 
