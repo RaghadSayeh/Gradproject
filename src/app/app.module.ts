@@ -24,7 +24,9 @@ import { HttpModule} from "@angular/http";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/database";
-//import { LoginPageModule } from '../pages/login/login.module';
+import { MyCalenderPage } from '../pages/my-calender/my-calender';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 
 
 const firebaseConfig = {
@@ -53,7 +55,8 @@ const firebaseConfig = {
     MessagesPage,
     ProfilePage,
     FollwersPage,
-    InterestsPage
+    InterestsPage,
+    MyCalenderPage
   ],
   imports: [
     BrowserModule,
@@ -61,11 +64,9 @@ const firebaseConfig = {
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-
     AngularFireDatabaseModule,
     AngularFireModule,
     AngularFireAuthModule
-    //LoginPageModule 
     
   ],
   bootstrap: [IonicApp],
@@ -84,13 +85,14 @@ const firebaseConfig = {
     ContPage,
     EventsPage,
     FollwersPage,
-    InterestsPage
+    InterestsPage,
+    MyCalenderPage
   ],
   providers: [
     AngularFireAuth,
     AngularFireDatabase,
     StatusBar,
-    SplashScreen,
+    SplashScreen,FileChooser,File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,12 +1,10 @@
 <ion-menu [content]="content">
- <!--<ion-content padding>
+ <<ion-content padding>
    <ion-list>
-    <p>some menu content , could be list items</p>
+    <button menu-close ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}</button>
   </ion-list>
- </ion-content-->
+ </ion-content>
 
-<button  menu-close ion-item (click)="goToFolls()">Followers</button>
-<button  menu-close ion-item (click)="GoToInter()">Your interests</button>
-<button ion-item menu-close (click)="Logout()">Logout</button>
 </ion-menu>
-<ion-nav #content [root]="rootPage"></ion-nav>
+<ion-nav #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+<!--[class.activeHighLight]="checkActive(p)"-->

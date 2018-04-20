@@ -58,45 +58,4 @@ export class EventsPage {
 
 
 
-  /*createE(){
-    var   account2 = {
-      Cname: this.Cname || '',
-      Cemail: this.Cemail || '',
-      subject: this.subject || '',
-      Month: this.Month || '',
-      Year: this.Year || '',
-      Day : this.Day || '',
-      place : this.place || '',
-      city : this.city || '',
-      //Paid :this.Paid
-     };
-     var that=this;
-   
-     });
-     this.eventServices.writeEventInfo(account2).then(authData =>{
-      let alert = this.alertctrl.create(
-        {
-           title : 'Thank You!',
-         // subTitle: 'We will respond to you soon',
-          buttons: ['Ok']
-        }
-      );
-      alert.present();
-      //that.navCtrl.setRoot(WelcomePage);
-    }, error => {
-     // loadingCtrl.dismiss();
-       // Unable to log in
-        let toast = this.toastctrl.create({
-          message: error,
-          duration: 3000,
-          position: 'top'
-        });
-        toast.present();
-      
-       // that.password = ""//empty the password field
-      });
-
-     
-  }*/
-
 }
