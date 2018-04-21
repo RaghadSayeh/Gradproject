@@ -35,36 +35,6 @@ export class EventDetailPage {
   ];
 
   doPrompt() {
-    let prompt = this.alertCtrl.create({
-      title: 'Purchase a Ticket',
-      
-      inputs: [
-        {
-          name: 'email',
-          placeholder: 'your email address'
-        },
-
-        {
-          name: 'password',
-          placeholder: 'your password'
-        },
-
-        {
-          name: 'cardNum',
-          placeholder: 'your card number'
-        },
-      ],
-     
-      buttons: [
-        {
-          text: 'Pay $150.00',
-          handler: data => {
-            console.log('Saved clicked');
-          }
-        }
-      ]
-    });
-    prompt.present();
   }
 
 

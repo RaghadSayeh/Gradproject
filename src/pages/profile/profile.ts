@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { User } from '../../models/user';
-//import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 
 /**
@@ -20,7 +20,7 @@ import { AngularFireObject }  from 'angularfire2/database';
 })
 export class ProfilePage {
 
- // userData : FirebaseObjectObservable<User>
+ userData : FirebaseObjectObservable<User>
   
   constructor ( public navCtrl: NavController,
     private afAuth: AngularFireAuth ,
@@ -33,7 +33,7 @@ export class ProfilePage {
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-    //    this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+       this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
        }
       
       

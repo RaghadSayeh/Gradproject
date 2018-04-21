@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar  >
     <ion-buttons>
       <button ion-button menuToggle>
         <ion-icon name="menu" color="primary"></ion-icon>
@@ -12,40 +12,39 @@
 
 
 <ion-content>
-<p>name :{{name}}</p>
-<br>
-<p>email :{{email}}</p>
-<br>
-<p>desc :{{desc}}</p>
-<br>
-<p>type :{{type}}</p>
-<br>
-<p>day :{{day}}</p>
-<br>
-<p>month :{{month}}</p>
-<br>
-<p>year :{{year}}</p>
-<br>
-<p>time :{{time}}</p>
-<br>
-<p>city :{{city}}</p>
-<br>
-<p>location :{{location}}</p>
-<br>
-<p>photo :{{photo}}</p>
-<br>
-<p>price :{{price}}</p>
-<br>
-<p>maxNo :{{maxNo}}</p>
-<br>
-<button (click)="Logout()"><ion-icon style="padding-right:4px" name="log-out"></ion-icon>
-  Logout</button>
-
-  
-
-  
-     
-
-
+  <ng-container *ngFor="let seq of (userData | async)?.interests; let y = index"  >
+  <ng-container *ngFor="let item of arrData; let i = index">
+      <ng-container *ngIf = "seq.indexOf(item.type) > -1">
+    <ion-item>
+      <ion-card>
+        <img src="{{item.photo}}" height="250"> 
+        <ion-item>
+          <ion-icon ios="ios-musical-notes" md="md-musical-notes" item-start large></ion-icon>
+          <h2>{{item.name}} </h2>
+          <p>{{item.desc}}</p>
+        </ion-item>
+      
+      <ion-item>
+        <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
+        <h2>{{item.time}}</h2>
+        <p>On {{item.day}} {{item.month}} {{item.year}} </p>
+      </ion-item>
+    
+        <ion-item>
+        <span item-left>18 min</span>
+        <button ion-button icon-left clear item-end *ngIf="item.paid" (click)="openEventPage(item.price)">
+          <ion-icon name="arrow-dropright-circle"></ion-icon>
+          {{item.price}}
+        </button>
+        <button ion-button icon-left clear item-end *ngIf="!item.paid" (click)="openEventPage(item.price)">
+          <ion-icon name="arrow-dropright-circle"></ion-icon>
+          Free
+        </button>
+      </ion-item>
+    </ion-card>
+  </ion-item>
+</ng-container>
+</ng-container> 
+  </ng-container> 
 </ion-content>
 

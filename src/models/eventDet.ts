@@ -14,4 +14,6 @@ export interface Event {
     paid: boolean ;
     price: string;  
     maxnumber: string ; 
+    RegNum : string ;
+    
 }

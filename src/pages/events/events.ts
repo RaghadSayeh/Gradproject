@@ -43,36 +43,11 @@ export class EventsPage {
   }
 
 
-  createE(name,email,desc,type,day,month,year,time,city,location,photo,paid,price,maxnumber){
+  createE(event: Event){
 
-    this.myUserProvider.setName(name);
-    this.myUserProvider.setEmail(email);
-    this.myUserProvider.setDesc(desc);
-    this.myUserProvider.setType(type);
-    this.myUserProvider.setDay(day);
-    this.myUserProvider.setMonth(month);
-    this.myUserProvider.setYear(year);
-    this.myUserProvider.setTime(time);
-    this.myUserProvider.setCity(city);
-    this.myUserProvider.setLocation(location);
-    this.myUserProvider.setPhoto(photo);
-    this.myUserProvider.setPrice(price);
-    this.myUserProvider.setMaxNo(maxnumber);
-
-  
-  /* var that = this;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {*/
-        //User is signed in
-      //  this.navCtrl.push(HomePage,data);
-        
-    // } else {
-        // User is signed out.
-        
-    //  }
-   
-     // });
-
+    this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
+    //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
+    
   }
 
 

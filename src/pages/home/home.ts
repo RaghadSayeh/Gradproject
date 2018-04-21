@@ -1,46 +1,34 @@
 import { Component } from '@angular/core';
-import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController } from 'ionic-angular';
+import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController, AlertController } from 'ionic-angular';
 import {EventDetailPage} from '../event-detail/event-detail';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
-//import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
-import { EventsPage } from '../events/events';
+import { LoginPage } from '../login/login';
 
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
+  templateUrl : 'home.html',
  
 })
 export class HomePage{
-    name;
-    email;
-    desc;
-    type;
-    day;
-    month;
-    year;
-    time;
-    city;
-    location;
-    photo;
-    paid;
-    price;
-    maxNo;
-
-     
+  user = {} as User;
+  //eventData :FirebaseObjectObservable<Event>
+  userData : FirebaseObjectObservable<User> 
   USerserviceProvider: any;
-arrData = []
-newArray: Array<any> = [];
+arrData = [] 
+
   constructor (
     public myUserProvider:UsersserviceProvider,
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth ,
+    private alertCtrl: AlertController,
     public menuCtrl : MenuController,
     public navCtrl : NavController,
     public navParams:NavParams,
@@ -58,7 +46,7 @@ newArray: Array<any> = [];
   }
 
   ionViewWillLoad() {
-    this.name=this.myUserProvider.getName();
+  /*  this.name=this.myUserProvider.getName();
     this.email=this.myUserProvider.getEmail();
     this.desc=this.myUserProvider.getDesc();
     this.type=this.myUserProvider.getType();
@@ -70,36 +58,55 @@ newArray: Array<any> = [];
     this.location=this.myUserProvider.getLocation();
     this.photo=this.myUserProvider.getPhoto();
     this.price=this.myUserProvider.getPrice();
-    this.maxNo=this.myUserProvider.getMaxNo();
+    this.maxNo=this.myUserProvider.getMaxNo();*/
 
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-     //   this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+        this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
        
        }
      
       });
 
      
-
-     /* for (var i = 0; i < this.arrData.length; i++) {
-        for (var j = 0; j < this.userData.interests.length; j++) {
-            if (this.arrData[i].type == this.userData.interests[j]) {
-            
-            this.newArray.push(this.arrData[i]);
-          }
-        }
-      }
-      console.log(this.newArray);*/
     
   }
 
 
-openEventPage(){
-  this.navCtrl.push(EventDetailPage);
-  
+openEventPage(item: string){
+  let prompt = this.alertCtrl.create({
+    title: 'Register in the Event :)',
+    
+    inputs: [
+      {
+        name: 'email',
+        placeholder: 'your email address'
+      },
+
+      {
+        name: 'password',
+        placeholder: 'your password'
+      },
+
+      {
+        name: 'cardNum',
+        placeholder: 'your card number'
+      },
+    ],
+   
+    buttons: [
+      {
+        text: item,
+        handler: data => {
+          console.log('Saved clicked');
+        }
+      }
+    ]
+  });
+  prompt.present();
 }
+  
 
 Logout(){
   this.afAuth.auth.signOut();
