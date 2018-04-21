@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController } from 'ionic-angular';
+import { NavController,App,IonicPage, LoadingController, ToastController,NavParams, MenuController, AlertController } from 'ionic-angular';
 import {EventDetailPage} from '../event-detail/event-detail';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from "angularfire2/auth";
@@ -9,24 +9,25 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
+import { LoginPage } from '../login/login';
 
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
+  templateUrl : 'home.html',
  
 })
 export class HomePage{
   //user = {} as User;
   //eventData :FirebaseObjectObservable<Event>
-  userData : FirebaseObjectObservable<User>
+  userData : FirebaseObjectObservable<User> 
   USerserviceProvider: any;
-arrData = []
-newArray: Array<any> = [];
+arrData = [] 
+
   constructor (
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth ,
-    //private toast: ToastController,
+    private alertCtrl: AlertController,
     public menuCtrl : MenuController,
     public navCtrl : NavController,
      public app: App
@@ -52,24 +53,44 @@ newArray: Array<any> = [];
       });
 
      
-
-     /* for (var i = 0; i < this.arrData.length; i++) {
-        for (var j = 0; j < this.userData.interests.length; j++) {
-            if (this.arrData[i].type == this.userData.interests[j]) {
-            
-            this.newArray.push(this.arrData[i]);
-          }
-        }
-      }
-      console.log(this.newArray);*/
     
   }
 
 
-openEventPage(){
-  this.navCtrl.push(EventDetailPage);
-  
+openEventPage(item: string){
+  let prompt = this.alertCtrl.create({
+    title: 'Register in the Event :)',
+    
+    inputs: [
+      {
+        name: 'email',
+        placeholder: 'your email address'
+      },
+
+      {
+        name: 'password',
+        placeholder: 'your password'
+      },
+
+      {
+        name: 'cardNum',
+        placeholder: 'your card number'
+      },
+    ],
+   
+    buttons: [
+      {
+        text: item,
+        handler: data => {
+          console.log('Saved clicked');
+        }
+      }
+    ]
+  });
+  prompt.present();
 }
+  
+
 Logout(){
     this.afAuth.auth.signOut();
    this.navCtrl.setRoot(WelcomePage);
