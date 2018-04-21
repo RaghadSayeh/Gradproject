@@ -4,19 +4,13 @@ import * as firebase from 'firebase';
 import { Event } from '../../models/eventDet';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
-//import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
-/**
- * Generated class for the EventsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePage } from '../home/home';
+import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 
 @IonicPage()
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html'
- // providers: [UsersserviceProvider]
 })
 export class EventsPage {
 
@@ -32,6 +26,7 @@ export class EventsPage {
      public navParams: NavParams,
      public laodctrl: LoadingController,
      public toastctrl:ToastController,
+     public myUserProvider:UsersserviceProvider,
      public alertctrl:
   AlertController) {
     this.afDatabase.list("/event/").valueChanges().subscribe(
@@ -48,14 +43,39 @@ export class EventsPage {
   }
 
 
-  createE(event: Event){
+  createE(name,email,desc,type,day,month,year,time,city,location,photo,paid,price,maxnumber){
 
-    this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
-    //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
-    
+    this.myUserProvider.setName(name);
+    this.myUserProvider.setEmail(email);
+    this.myUserProvider.setDesc(desc);
+    this.myUserProvider.setType(type);
+    this.myUserProvider.setDay(day);
+    this.myUserProvider.setMonth(month);
+    this.myUserProvider.setYear(year);
+    this.myUserProvider.setTime(time);
+    this.myUserProvider.setCity(city);
+    this.myUserProvider.setLocation(location);
+    this.myUserProvider.setPhoto(photo);
+    this.myUserProvider.setPrice(price);
+    this.myUserProvider.setMaxNo(maxnumber);
+
+  
+  /* var that = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {*/
+        //User is signed in
+      //  this.navCtrl.push(HomePage,data);
+        
+    // } else {
+        // User is signed out.
+        
+    //  }
+   
+     // });
+
   }
 
 
 
-
-}
+  
+  }

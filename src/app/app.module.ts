@@ -27,7 +27,9 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from "angularfire2/dat
 import { MyCalenderPage } from '../pages/my-calender/my-calender';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { File } from '@ionic-native/file';
-
+import { UsersserviceProvider } from '../providers/usersservice/usersservice';
+import { NavController } from 'ionic-angular/navigation/nav-controller';
+import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -89,9 +91,11 @@ const firebaseConfig = {
     MyCalenderPage
   ],
   providers: [
+    
     AngularFireAuth,
     AngularFireDatabase,
     StatusBar,
+    UsersserviceProvider,
     SplashScreen,FileChooser,File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
