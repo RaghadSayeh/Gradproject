@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, MenuController } from 'ionic-angular';
+import { Platform, Nav, MenuController} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupPage } from '../pages/signup/signup';
@@ -16,8 +16,8 @@ import { FollwersPage } from '../pages/follwers/follwers';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { MyCalenderPage} from '../pages/my-calender/my-calender';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
-
-
+import { AngularFireDatabase } from 'angularfire2/database';
+import {AngularFireAuth} from "angularfire2/auth";
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,7 +28,8 @@ export class MyApp {
   pages: Array<{title: string, component :any}>;
  
   constructor( public platform: Platform, public statusBar: StatusBar,
-    public splashScreen: SplashScreen) {
+    public splashScreen: SplashScreen ,public afDatabase: AngularFireDatabase,
+    private afAuth: AngularFireAuth ) {
    this.initializeApp();
     this.pages = [
       { title:'Home', component: HomePage},
@@ -73,6 +74,8 @@ export class MyApp {
     return pages == this.activePage;
   }*/
 
+
+  
 initializeApp() {
   this.platform.ready().then(() => {
     // Okay, so the platform is ready and our plugins are available.

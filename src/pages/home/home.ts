@@ -6,9 +6,10 @@ import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+//import { FirebaseObjectObservable } from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
+import { EventsPage } from '../events/events';
 
 
 @Component({
@@ -17,18 +18,32 @@ import { Event } from '../../models/eventDet';
  
 })
 export class HomePage{
-  //user = {} as User;
-  //eventData :FirebaseObjectObservable<Event>
-  userData : FirebaseObjectObservable<User>
+    name;
+    email;
+    desc;
+    type;
+    day;
+    month;
+    year;
+    time;
+    city;
+    location;
+    photo;
+    paid;
+    price;
+    maxNo;
+
+     
   USerserviceProvider: any;
 arrData = []
 newArray: Array<any> = [];
   constructor (
+    public myUserProvider:UsersserviceProvider,
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth ,
-    //private toast: ToastController,
     public menuCtrl : MenuController,
     public navCtrl : NavController,
+    public navParams:NavParams,
      public app: App
     ) { 
 
@@ -38,14 +53,29 @@ newArray: Array<any> = [];
           console.log(this.arrData) ;
         }
       );
+      
 
   }
 
   ionViewWillLoad() {
-    
+    this.name=this.myUserProvider.getName();
+    this.email=this.myUserProvider.getEmail();
+    this.desc=this.myUserProvider.getDesc();
+    this.type=this.myUserProvider.getType();
+    this.day=this.myUserProvider.getDay();
+    this.month=this.myUserProvider.getMonth();
+    this.year=this.myUserProvider.getYear();
+    this.time=this.myUserProvider.getTime();
+    this.city=this.myUserProvider.getCity();
+    this.location=this.myUserProvider.getLocation();
+    this.photo=this.myUserProvider.getPhoto();
+    this.price=this.myUserProvider.getPrice();
+    this.maxNo=this.myUserProvider.getMaxNo();
+
+
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-        this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+     //   this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
        
        }
      
@@ -70,11 +100,12 @@ openEventPage(){
   this.navCtrl.push(EventDetailPage);
   
 }
+
 Logout(){
-    this.afAuth.auth.signOut();
-   this.navCtrl.setRoot(WelcomePage);
- }
- 
+  this.afAuth.auth.signOut();
+ this.navCtrl.setRoot(WelcomePage);
+}
+
 
 
 }
