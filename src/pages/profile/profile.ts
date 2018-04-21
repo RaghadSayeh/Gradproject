@@ -18,7 +18,7 @@ import { AngularFireObject }  from 'angularfire2/database';
   selector: 'page-profile' ,
   templateUrl : 'profile.html',
 })
-export class ProfilePage {
+export class ProfilePage{
 
  userData : FirebaseObjectObservable<User>
   

@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 import { HomePage } from '../pages/home/home';
 import { EventDetailPage} from '../pages/event-detail/event-detail';
 import {ProfilePage} from '../pages/profile/profile';
+import {SearchPage} from '../pages/search/search';
 import { MessagesPage } from '../pages/messages/messages';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FollwersPage } from '../pages/follwers/follwers';

@@ -9,6 +9,7 @@ import {ProfilePage} from '../profile/profile';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 import { User } from '../../models/user';
+import { SearchPage } from '../search/search';
 @Component({
   templateUrl: 'tabs.html'
 })
@@ -16,7 +17,9 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = MessagesPage;
-  tab3Root = ProfilePage;
+  tab3Root = SearchPage;
+  tab4Root = ProfilePage;
+
 
   
 

@@ -30,6 +30,7 @@ import { File } from '@ionic-native/file';
 import { UsersserviceProvider } from '../providers/usersservice/usersservice';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base';
+import { SearchPage } from '../pages/search/search';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -56,6 +57,7 @@ const firebaseConfig = {
     EventDetailPage,
     MessagesPage,
     ProfilePage,
+    SearchPage,
     FollwersPage,
     InterestsPage,
     MyCalenderPage
@@ -83,6 +85,7 @@ const firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
+    SearchPage,
     TabsPage,
     ContPage,
     EventsPage,

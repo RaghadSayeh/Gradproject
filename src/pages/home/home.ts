@@ -6,7 +6,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { FirebaseObjectObservable} from 'angularfire2/database';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
 import { LoginPage } from '../login/login';
