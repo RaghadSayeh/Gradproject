@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Event datails</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-input type="text" placeholder="title" [(ngModel)]="event.title">
+   </ion-input>
+  </ion-item>
+
+   <ion-item>
+     <ion-label>Start</ion-label>
+     <ion-datetime displayFormat="MM/DD/YYYY HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+   </ion-item>
+
+   <ion-item>
+      <ion-label>End</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>All Day?</ion-label>
+      <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+    </ion-item>
+</ion-list>
+<button ion-button full icon-left (click)="save()">
+  <ion-icon name="checkmark"></ion-icon>Add Event
+</button>
+</ion-content>
