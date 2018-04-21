@@ -30,6 +30,7 @@ import { File } from '@ionic-native/file';
 import { UsersserviceProvider } from '../providers/usersservice/usersservice';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base';
+import {NgCalendarModule} from 'ionic2-calendar';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -61,6 +62,7 @@ const firebaseConfig = {
     MyCalenderPage
   ],
   imports: [
+    NgCalendarModule,
     BrowserModule,
     HttpModule,
     HttpClientModule,
