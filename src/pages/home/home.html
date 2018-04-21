@@ -12,11 +12,10 @@
 
 
 <ion-content>
-<<<<<<< HEAD
   <ng-container *ngFor="let seq of (userData | async)?.interests; let y = index"  >
   <ng-container *ngFor="let item of arrData; let i = index">
       <ng-container *ngIf = "seq.indexOf(item.type) > -1">
-    <ion-item >
+    <ion-item>
       <ion-card>
         <img src="{{item.photo}}" height="250"> 
         <ion-item>
@@ -47,42 +46,5 @@
 </ng-container>
 </ng-container> 
   </ng-container> 
-=======
-<p>name :{{name}}</p>
-<br>
-<p>email :{{email}}</p>
-<br>
-<p>desc :{{desc}}</p>
-<br>
-<p>type :{{type}}</p>
-<br>
-<p>day :{{day}}</p>
-<br>
-<p>month :{{month}}</p>
-<br>
-<p>year :{{year}}</p>
-<br>
-<p>time :{{time}}</p>
-<br>
-<p>city :{{city}}</p>
-<br>
-<p>location :{{location}}</p>
-<br>
-<p>photo :{{photo}}</p>
-<br>
-<p>price :{{price}}</p>
-<br>
-<p>maxNo :{{maxNo}}</p>
-<br>
-<button (click)="Logout()"><ion-icon style="padding-right:4px" name="log-out"></ion-icon>
-  Logout</button>
-
-  
-
-  
-     
-
-
->>>>>>> ad786ff1fb8fe2961195c2f8fb452a27a4fd5d42
 </ion-content>
 

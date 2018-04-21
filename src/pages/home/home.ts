@@ -6,7 +6,7 @@ import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
-//import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
 import { LoginPage } from '../login/login';
@@ -18,7 +18,7 @@ import { LoginPage } from '../login/login';
  
 })
 export class HomePage{
-  //user = {} as User;
+  user = {} as User;
   //eventData :FirebaseObjectObservable<Event>
   userData : FirebaseObjectObservable<User> 
   USerserviceProvider: any;
@@ -63,7 +63,7 @@ arrData = []
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-     //   this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+        this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
        
        }
      
