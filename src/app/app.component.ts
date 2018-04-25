@@ -68,7 +68,7 @@ export class MyApp {
   }*/
 }
   openPage(pages){
-    this.nav.setRoot(pages.component);
+    this.nav.push(pages.component);
     this.activePage = pages;
   }
   /*checkActive(pages){

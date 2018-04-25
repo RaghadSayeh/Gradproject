@@ -17,6 +17,14 @@
       <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.lastname" name="lastname" ></ion-input>
       </ion-item>
     <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+        <ion-label floating>Photo</ion-label>
+        <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.photo" name="photo" ></ion-input>
+        </ion-item>
+    <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+      <ion-label floating>Address</ion-label>
+      <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.address" name="address" ></ion-input>
+    </ion-item>
+    <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
       <ion-label floating>Email</ion-label>
       <ion-input style="border-bottom-color:white;box-shadow:none;" type="email" [(ngModel)]="user.email" name="email" ></ion-input>
       </ion-item>
@@ -24,6 +32,10 @@
       <ion-label floating>Password</ion-label>
       <ion-input style="border-bottom-color:white;box-shadow:none;" type="password" [(ngModel)]="user.password" name="password" ></ion-input>
     </ion-item>
+    <ion-item style="padding:0px !important; border-bottom:none !important ;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+    <ion-label style="padding-left:10px">Private </ion-label>
+    <ion-toggle  checked="false" [(ngModel)]="user.private"></ion-toggle>
+     </ion-item>
     
     </ion-list>
     <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="chooseInterests(user)">Choose Interests</button>

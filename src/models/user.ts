@@ -4,7 +4,11 @@ export interface User {
     firstname: string ;
     lastname: string ;
     interests : string [];
-    following : string ;
-    followers : string ;
+    following : number ;
+    followers : number ;
     RegEvents : string [];
+    MyEvents : string[];
+    private : string ;
+    address : string ;
+    photo : URL ;
 }

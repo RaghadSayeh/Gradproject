@@ -12,7 +12,7 @@
 
 
 
-<ion-content>
+<ion-content >
   <ng-container *ngFor="let seq of (userData | async)?.interests; let y = index"  >
   <ng-container *ngFor="let item of arrData; let i = index">
       <ng-container *ngIf = "seq.indexOf(item.type) > -1">
@@ -31,16 +31,17 @@
         <p>On {{item.day}} {{item.month}} {{item.year}} </p>
       </ion-item>
     
-        <ion-item>
+        <ion-item >
         <span item-left>18 min</span>
-        <button ion-button icon-left clear item-end *ngIf="item.paid" (click)="openEventPage(item.price)">
+        <button ion-button icon-left clear item-end [disabled]="item.maxnumber-item.regnumber == 0 " *ngIf="item.paid" (click)="openPrice(item , i)">
           <ion-icon name="arrow-dropright-circle"></ion-icon>
           {{item.price}}
         </button>
-        <button ion-button icon-left clear item-end *ngIf="!item.paid" (click)="openEventPage(item.price)">
+        <button ion-button icon-left clear item-end [disabled]="item.maxnumber-item.regnumber == 0 " *ngIf="!item.paid" (click)="openFree(item , i)">
           <ion-icon name="arrow-dropright-circle"></ion-icon>
           Free
         </button>
+        <p *ngIf="item.maxnumber - item.regnumber == 0">Number of Attendence is completed </p>
       </ion-item>
     </ion-card>
   </ion-item>

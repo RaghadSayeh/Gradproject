@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { User } from '../../models/user';
 
 /**
  * Generated class for the EventDetailPage page.
@@ -14,29 +15,21 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'event-detail.html',
 })
 export class EventDetailPage {
+  person = {} as User;
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+      public alertCtrl: AlertController) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+        this.person = this.navParams.get('person');
+        console.log(this.person);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventDetailPage');
   }
 
-  slider = [
-    {
-      title : 'Special Invitation',
-      image :"assets/imgs/music.png"
-    },
-    {
-      title : 'Location',
-      image :"assets/imgs/music.png"
-    }
 
-  ];
-
-  doPrompt() {
-  }
-
+  
 
 
 }

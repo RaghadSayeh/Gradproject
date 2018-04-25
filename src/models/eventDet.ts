@@ -13,7 +13,8 @@ export interface Event {
     photo : URL ;
     paid: boolean ;
     price: string;  
-    maxnumber: string ; 
-    RegNum : string ;
+    maxnumber: number ; 
+    regnumber : number ;
+    regNames: string[] ;
     
 }

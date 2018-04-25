@@ -14,17 +14,6 @@
 
 
 <ion-content padding>
-  <div>
-<ion-slides pager>
-  <ion-slide *ngFor="let slide of slider">
-    <img [src]= "slide.image"/>
-  </ion-slide>
-</ion-slides>
-</div>
-<p>As the seasons change, we warm our hearts with the tunes 
-  that instantly bring memories of our loved ones
-   and this most favorite time of year.</p>
 
-   <button ion-button color="secondary" block (click)="doPrompt()">Purchase Tickets</button>
-
+<h1>{{person.firstname}}</h1>
 </ion-content>

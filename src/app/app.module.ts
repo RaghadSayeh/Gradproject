@@ -30,11 +30,8 @@ import { File } from '@ionic-native/file';
 import { UsersserviceProvider } from '../providers/usersservice/usersservice';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base';
-<<<<<<< HEAD
-import { SearchPage } from '../pages/search/search';
-=======
 import {NgCalendarModule} from 'ionic2-calendar';
->>>>>>> 3941ef70b8d7a582a5752695cdd17d0989d81602
+import { SearchPage } from '../pages/search/search';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",

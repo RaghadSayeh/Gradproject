@@ -16,13 +16,30 @@
 <ion-content>
 <div class="profile-container">
   <div class="profile-img-circle">
-      <img src="http://www.fillmurray.com/g/100/100" alt="">
+      <img src="{{(userData | async)?.photo}}" alt="">
   </div>
+ 
+
+</div>
+<div class="profile-followers">
+  <h3>Followers : {{(userData | async)?.followers}}</h3>
+</div>
+<div class="profile-following">
+  <h3>Following : {{(userData | async)?.following}}</h3>
 </div>
 <div class="profile-content">
-  <h2>{{(userData | async)?.firstname}} {{(userData | async)?.lastname}}</h2>
- 
-  
-  
+  <h2>{{(userData | async)?.firstname}} {{(userData | async)?.lastname}}</h2> 
 </div>
+
+
+<ng-container *ngFor="let seq of uesrEventsData" >
+<ng-container *ngFor="let item of eventData ; let i = index">
+        <ng-container *ngIf = "seq.eventName === item.name">
+          <ion-item>
+         <p> {{item.desc}}</p>
+        </ion-item> 
+
+        </ng-container>
+</ng-container>
+</ng-container>
 </ion-content>

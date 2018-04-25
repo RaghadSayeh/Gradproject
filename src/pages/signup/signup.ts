@@ -117,6 +117,8 @@ export class SignupPage {
       text: 'Okay',
       handler: data => {
         user.interests = data ;
+        user.followers = 0 ;
+        user.following = 0 ;
         console.log('Checkbox data:', data);
         this.testCheckboxOpen = false;
         this.testCheckboxResult = data;

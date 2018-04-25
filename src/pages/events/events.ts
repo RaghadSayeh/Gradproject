@@ -20,7 +20,7 @@ export class EventsPage {
   arrData = [];
   arrDataId ;
 
-  constructor(
+  constructor (
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController,
      public navParams: NavParams,
@@ -44,7 +44,7 @@ export class EventsPage {
 
 
   createE(event: Event){
-
+    event.regnumber = 0 ;
     this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
     //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
     
