@@ -44,7 +44,7 @@ ionViewWillLoad(){
       this.toast.create(
         {
           message: 'Could not find authentication details ',
-          duration: 3000
+          duration: 1000
         }).present();
      }
     }

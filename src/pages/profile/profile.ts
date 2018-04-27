@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable} from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 
 /**

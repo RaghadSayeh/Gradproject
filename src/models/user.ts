@@ -11,4 +11,6 @@ export interface User {
     private : string ;
     address : string ;
     photo : URL ;
+    followersArray : string[] ;
+    followingArray : string[] ;
 }

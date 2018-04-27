@@ -8,6 +8,7 @@ import { User } from '../../models/user';
 import {AngularFireAuth} from "angularfire2/auth";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { auth } from 'firebase';
+import { IDS } from '../../models/IDS';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ import { auth } from 'firebase';
 export class SignupPage {
 
   user = {} as User;
+  iduser = {} as IDS ;
 
   testCheckboxOpen: boolean;
   testCheckboxResult;
@@ -47,6 +49,9 @@ export class SignupPage {
     this.afAuth.authState.subscribe(auth =>{
       this.afDatabase.object('user/'+ auth.uid).set(this.user)
       .then(() => this.navCtrl.setRoot(LoginPage))
+      this.iduser.ID = auth.uid 
+      this.iduser.IDemail = auth.email 
+      this.afDatabase.object('IDS/'+ this.user.firstname ).set(this.iduser)
     })
     //this.navCtrl.push(LoginPage);
     }

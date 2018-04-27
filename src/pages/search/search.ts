@@ -21,6 +21,8 @@ export class SearchPage {
   searchQuery: string = '';
   items: string[];
   arrUsers = []
+  arrIDs = []
+  userID :string ;
 
   constructor(public navCtrl: NavController,
     private afDatabase: AngularFireDatabase,
@@ -30,6 +32,12 @@ export class SearchPage {
       _data => {
         this.arrUsers = _data ; 
         console.log(this.arrUsers) ;
+      }
+    );
+
+    this.afDatabase.list("/IDS/").valueChanges().subscribe(
+      _data => {
+        this.arrIDs = _data ; 
       }
     );
 
@@ -53,6 +61,11 @@ export class SearchPage {
   }
 
   showPage(item: User){
-    this.navCtrl.push(EventDetailPage , {'person': item});
+    for(let yy of this.arrIDs){
+      if(item.email == yy.IDemail){
+        this.userID = yy.ID;
+      }
+    }
+    this.navCtrl.push(EventDetailPage , {'person': item , 'personID': this.userID});
   }
 }

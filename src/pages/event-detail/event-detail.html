@@ -7,13 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>event</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class="profile-container">
+      <div class="profile-img-circle">
+          <img src="{{person.photo}}" alt="">
+      </div>
+    </div>
+    <div class="profile-content">
+      <h2>{{person.firstname}} {{person.lastname}}</h2>
+      <h4>Followers : {{person.followers}} <ion-icon ios="ios-people" md="md-people"></ion-icon>  |  Following : {{person.following}} <ion-icon ios="ios-eye" md="md-eye"></ion-icon></h4>
+      <h4>{{person.address}} </h4>
+    </div>
 
-<h1>{{person.firstname}}</h1>
+    <button class="bot-place" ion-button outline round icon-left [disabled]="isenabled" (click)="followPerson(person)">
+      <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+      Follow
+    </button>
+
+    <button ion-button outline round icon-left [disabled]="!isenabled" (click)="unfollowPerson(person)">
+      <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+      UnFollow
+    </button>
+
+    <p class="bostyle"></p>
+
 </ion-content>
