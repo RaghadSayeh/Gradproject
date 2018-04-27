@@ -11,6 +11,7 @@ import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
 import { LoginPage } from '../login/login';
 import { min } from 'moment';
+import { DISABLED } from '@angular/forms/src/model';
 
 
 @Component({
@@ -23,9 +24,11 @@ export class HomePage {
   //eventData :FirebaseObjectObservable<Event>
   userData : FirebaseObjectObservable<User> 
   USerserviceProvider: any;
-arrData = [] 
-userID ;
-sts=true ;
+  arrData = [] 
+  userID ;
+  sts=true ;
+  isDisabled: boolean = false ;
+
 
   constructor (
     public myUserProvider:UsersserviceProvider,
@@ -49,21 +52,6 @@ sts=true ;
   }
 
   ionViewWillLoad() {
-  /*  this.name=this.myUserProvider.getName();
-    this.email=this.myUserProvider.getEmail();
-    this.desc=this.myUserProvider.getDesc();
-    this.type=this.myUserProvider.getType();
-    this.day=this.myUserProvider.getDay();
-    this.month=this.myUserProvider.getMonth();
-    this.year=this.myUserProvider.getYear();
-    this.time=this.myUserProvider.getTime();
-    this.city=this.myUserProvider.getCity();
-    this.location=this.myUserProvider.getLocation();
-    this.photo=this.myUserProvider.getPhoto();
-    this.price=this.myUserProvider.getPrice();
-    this.maxNo=this.myUserProvider.getMaxNo();*/
-
-
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
         this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
@@ -72,12 +60,11 @@ sts=true ;
      
       });
 
-     
-    
   }
 
 
 openPrice(item : Event , s:number){
+  
   let prompt = this.alertCtrl.create({
     title: 'Register in the Event :)',
     
@@ -117,14 +104,15 @@ openPrice(item : Event , s:number){
     buttons: [
       {
         text: "purchase you ticket" ,
+        
         handler: data => {
           this.afAuth.authState.subscribe(auth =>{
             this.afDatabase.object('user/'+ auth.uid+'/RegEvents/'+item.name).set(data)
             .then(() => this.navCtrl.setRoot(HomePage))
-          })
-          this.afDatabase.object('event/'+ s + '/regNames/' + item.regnumber  ).set(this.userID);
-          this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1});
-          console.log('Saved clicked');
+            this.afDatabase.object('event/'+ s + '/regNames/' + auth.uid  ).set(auth.email)
+            this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1})
+            console.log('Saved clicked')
+          }) 
         }
       },
 
@@ -183,10 +171,11 @@ openFree(item : Event , s:number){
           this.afAuth.authState.subscribe(auth =>{
             this.afDatabase.object('user/'+ auth.uid+'/RegEvents/'+item.name).set(data)
             .then(() => this.navCtrl.setRoot(HomePage))
+            this.afDatabase.object('event/'+ s + '/regNames/' + auth.uid  ).set(auth.email)
+          this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1})
+          console.log('Saved clicked')
           })
-          this.afDatabase.object('event/'+ s + '/regNames/' + item.regnumber  ).set(this.userID);
-          this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1});
-          console.log('Saved clicked');
+          
         }
       },
 

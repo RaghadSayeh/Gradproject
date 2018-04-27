@@ -38,7 +38,10 @@
             </ion-thumbnail>
             <h2>{{item.name}}</h2>
             <p>{{item.desc}}</p>
-            <button ion-button clear item-end>UnRegister</button>
+            <p>At {{item.time}} , On {{item.day}}/{{item.month}}/{{item.year}}</p>
+            <p>In {{item.city}} , {{item.location}} </p>
+            <p>Price : ${{item.price}}</p>
+            <button ion-button clear item-end (click)="unRegister(item , i)">UnRegister</button>
           </ion-item>
         </ion-list>
 
