@@ -25,12 +25,12 @@
       <h4>{{person.address}} </h4>
     </div>
 
-    <button class="bot-place" ion-button outline round icon-left [disabled]="isenabled" (click)="followPerson(person)">
+    <button class="bot-place" ion-button outline round icon-left [disabled]="followdisable" (click)="followPerson(person)">
       <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
       Follow
     </button>
 
-    <button ion-button outline round icon-left [disabled]="!isenabled" (click)="unfollowPerson(person)">
+    <button ion-button outline round icon-left [disabled]="unfollowdisable" (click)="unfollowPerson(person)">
       <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
       UnFollow
     </button>

@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { EventDetailPage } from '../event-detail/event-detail';
 import { User } from '@firebase/auth-types';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ProfilePage } from '../profile/profile';
 /**
  * Generated class for the SearchPage page.
  *
@@ -23,9 +24,14 @@ export class SearchPage {
   arrUsers = []
   arrIDs = []
   userID :string ;
+  userEm: string ;
+  uesrFollowing= []
+  followdisable :boolean = false;
+  unfollowdisable :boolean = true ;
 
   constructor(public navCtrl: NavController,
     private afDatabase: AngularFireDatabase,
+    private afAuth: AngularFireAuth ,
      public navParams: NavParams) {
 
     this.afDatabase.list("/user/").valueChanges().subscribe(
@@ -46,7 +52,20 @@ export class SearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
-  }
+
+    this.afAuth.authState.subscribe(data =>{
+      if(data && data.email && data.uid){
+       this.userEm = data.email ;
+       this.afDatabase.list('/user/'+ data.uid+'/followingArray/').valueChanges().subscribe(
+        _data => {
+          this.uesrFollowing = _data ; 
+          console.log(this.uesrFollowing) ;
+        }
+      );
+      
+       }
+  });
+}
 
 
   getItems(ev: any) {
@@ -66,6 +85,22 @@ export class SearchPage {
         this.userID = yy.ID;
       }
     }
-    this.navCtrl.push(EventDetailPage , {'person': item , 'personID': this.userID});
+
+    for(let x of this.uesrFollowing){
+      if(x == item.email){
+        this.followdisable = true ;
+        this.unfollowdisable = false ;
+        break;}
+    }
+    
+    if(this.userEm == item.email)
+    {
+      this.navCtrl.push(ProfilePage);
+    }
+    else{
+      this.navCtrl.push(EventDetailPage , {'person': item , 'personID': this.userID , 'followdisable':this.followdisable , 'unfollowdisable':this.unfollowdisable});
+    }
+
+    
   }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable} from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 
@@ -23,7 +23,8 @@ export class EventDetailPage {
   userData : FirebaseObjectObservable<User>
   uesrFollowers= []
   uesrFollowing= []
-  isenabled = false ;
+  followdisable :boolean ;
+  unfollowdisable :boolean ;
   personID : string;
 
   constructor(public navCtrl: NavController,
@@ -34,7 +35,11 @@ export class EventDetailPage {
 
         this.person = this.navParams.get('person');
         this.personID = this.navParams.get('personID');
+        this.followdisable = this.navParams.get('followdisable');
+        this.unfollowdisable = this.navParams.get('unfollowdisable');
         console.log(this.person);
+
+       
   }
 
   ionViewDidLoad() {
@@ -61,37 +66,39 @@ export class EventDetailPage {
       }
   );
 
-  for(let x of this.uesrFollowers){
-    if(x == this.person.email)
-      this.isenabled = true ;
-  }
+
   }
 
 
   followPerson(person : User){
-     //this.person.followersArray = this.userData.email ;
-     //this.userData.followingArray = this.person.email ;
-     //this.person.followers += 1 ;
-     //this.userData.follwing += 1 ;
-     //$user = $this->ion_auth->where('email', $email)->users()->row();
-     this.afDatabase.object('user/'+ this.personID +'/followersArray/'+ this.uesrFollowing.length).set(this.person.email)
-     this.afDatabase.object('user/'+ this.personID +'/followers/').set(this.person.followers + 1)
-
+    this.person.followers += 1 ;
      this.afAuth.authState.subscribe(auth =>{
-      this.afDatabase.object('user/'+ auth.uid+'/followingArray/'+ this.uesrFollowing.length).set(this.person.email)
+      this.afDatabase.object('user/'+ auth.uid+'/followingArray/'+ this.personID).set(this.person.email)
       this.afDatabase.object('user/'+ auth.uid+'/following/').set(this.uesrFollowing.length + 1)
-      this.afDatabase.object('user/'+ this.personID +'/followersArray/'+ this.uesrFollowing.length).set(auth.email)
-     this.afDatabase.object('user/'+ this.personID +'/followers/').set(this.person.followers + 1)
+      this.afDatabase.object('user/'+ this.personID +'/followersArray/'+ auth.uid).set(auth.email)
+     this.afDatabase.object('user/'+ this.personID +'/followers/').set(this.person.followers )
     })
     
-    //this.afDatabase.object('event/'+ s + '/regNames/' + item.regnumber  ).set(this.userID);
-    //this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1});
-    this.isenabled = true ;
+    this.followdisable = true ;
+    this.unfollowdisable = false ;
+    //window.location.reload() ;
+    //this.ionViewDidLoad();
   }
 
 
   unfollowPerson(){
+    this.person.followers -= 1 ;
+    this.afAuth.authState.subscribe(auth =>{
+      this.afDatabase.object('user/'+ auth.uid+'/followingArray/'+ this.personID).remove()
+      this.afDatabase.object('user/'+ auth.uid+'/following/').set(this.uesrFollowing.length - 1)
+      this.afDatabase.object('user/'+ this.personID +'/followersArray/'+ auth.uid).remove()
+     this.afDatabase.object('user/'+ this.personID +'/followers/').set(this.person.followers)
+    })
     
+    this.followdisable = false ;
+    this.unfollowdisable = true ;
+    //window.location.reload() ;
+    //this.ionViewDidLoad();
   }
 
 
