@@ -14,6 +14,7 @@ import {SearchPage} from '../pages/search/search';
 import { MessagesPage } from '../pages/messages/messages';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FollwersPage } from '../pages/follwers/follwers';
+import { FollowingPage } from '../pages/following/following';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { MyCalenderPage} from '../pages/my-calender/my-calender';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
@@ -35,7 +36,9 @@ export class MyApp {
     this.pages = [
       { title:'Home', component: HomePage},
       { title:'MyCalender', component: MyCalenderPage},
-      { title :'Follwers', component: FollwersPage}
+      { title :'Follwers', component: FollwersPage},
+      { title :'Followings', component: FollowingPage},
+      { title :'Create Event ', component: EventsPage}
     ];
    // this.activePage=this.pages[0];
     /*

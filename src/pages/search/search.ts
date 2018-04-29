@@ -91,6 +91,10 @@ export class SearchPage {
         this.followdisable = true ;
         this.unfollowdisable = false ;
         break;}
+        else{
+          this.followdisable = false ;
+        this.unfollowdisable = true ;
+        }
     }
     
     if(this.userEm == item.email)

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController,ToastController,AlertController} from 'ionic-angular';
 import * as firebase from 'firebase';
 import { Event } from '../../models/eventDet';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase} from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';

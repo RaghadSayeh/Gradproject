@@ -32,6 +32,7 @@ import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base';
 import {NgCalendarModule} from 'ionic2-calendar';
 import { SearchPage } from '../pages/search/search';
+import { FollowingPage } from '../pages/following/following';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -60,6 +61,7 @@ const firebaseConfig = {
     ProfilePage,
     SearchPage,
     FollwersPage,
+    FollowingPage,
     InterestsPage,
     MyCalenderPage
   ],
@@ -92,6 +94,7 @@ const firebaseConfig = {
     ContPage,
     EventsPage,
     FollwersPage,
+    FollowingPage,
     InterestsPage,
     MyCalenderPage
   ],

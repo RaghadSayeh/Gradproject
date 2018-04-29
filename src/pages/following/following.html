@@ -1,5 +1,5 @@
 <!--
-  Generated template for the FollwersPage page.
+  Generated template for the FollowingPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Follwers</ion-title>
+    <ion-title>Followings</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,9 +16,10 @@
 <ion-content padding>
 
     <ion-list>
-        <ng-container *ngFor="let seq of arrFollowers">
+        <ng-container *ngFor="let seq of arrFollowings">
             <ng-container *ngFor="let item of arrUsers">
-        <ion-item *ngIf = "seq === item.email">
+                <ng-container *ngIf = "seq === item.email">
+        <ion-item >
           <ion-thumbnail item-start>
             <img src="{{item.photo}}">
           </ion-thumbnail>
@@ -26,6 +27,7 @@
           <p>{{ item.address }}</p>
         </ion-item>
       </ng-container>
+    </ng-container>
       </ng-container>
       </ion-list>
 

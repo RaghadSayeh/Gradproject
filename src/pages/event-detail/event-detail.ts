@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseObjectObservable} from 'angularfire2/database';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 
@@ -26,6 +26,8 @@ export class EventDetailPage {
   followdisable :boolean ;
   unfollowdisable :boolean ;
   personID : string;
+  eventData = []
+  userEvents = []
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -37,7 +39,22 @@ export class EventDetailPage {
         this.personID = this.navParams.get('personID');
         this.followdisable = this.navParams.get('followdisable');
         this.unfollowdisable = this.navParams.get('unfollowdisable');
+        
         console.log(this.person);
+
+        this.afDatabase.list("/event/").valueChanges().subscribe(
+          _data => {
+            this.eventData = _data ; 
+            console.log(this.eventData) ;
+          }
+        );
+
+        this.afDatabase.list('/user/'+ this.personID+'/RegEvents/').valueChanges().subscribe(
+          _data => {
+            this.userEvents = _data ; 
+            console.log(this.userEvents) ;
+          }
+        );
 
        
   }

@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
-import { FirebaseObjectObservable} from 'angularfire2/database';
+import { FirebaseObjectObservable name } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { HomePage } from '../home/home';
 

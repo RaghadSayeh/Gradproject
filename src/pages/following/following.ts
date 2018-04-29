@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 /**
- * Generated class for the FollwersPage page.
+ * Generated class for the FollowingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,13 +11,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-follwers',
-  templateUrl: 'follwers.html',
+  selector: 'page-following',
+  templateUrl: 'following.html',
 })
-export class FollwersPage {
+export class FollowingPage {
 
-  arrFollowers = []
- arrUsers = []
+  arrFollowings = []
+  arrUsers = []
+
   constructor(public navCtrl: NavController,
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth ,
@@ -25,14 +26,14 @@ export class FollwersPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FollwersPage');
+    console.log('ionViewDidLoad FollowingPage');
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-       this.afDatabase.list('/user/'+ data.uid+'/followersArray/').valueChanges().subscribe(
+       this.afDatabase.list('/user/'+ data.uid+'/followingArray/').valueChanges().subscribe(
         _data => {
-          this.arrFollowers = _data ; 
-          console.log(this.arrFollowers) ;
+          this.arrFollowings = _data ; 
+          console.log(this.arrFollowings) ;
         }
       );
 
@@ -45,8 +46,5 @@ export class FollwersPage {
        }
   });
   }
-  GoToFolls()
-{
-  this.navCtrl.push(FollwersPage);
-}
+
 }
