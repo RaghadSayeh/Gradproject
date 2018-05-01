@@ -13,4 +13,5 @@ export interface User {
     photo : URL ;
     followersArray : string[] ;
     followingArray : string[] ;
+    todos: string [];
 }

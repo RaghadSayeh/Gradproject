@@ -20,6 +20,12 @@ import { MyCalenderPage} from '../pages/my-calender/my-calender';
 //import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth} from "angularfire2/auth";
+import {EditnPage } from '../pages/editn/editn';
+import {AddPage} from '../pages/add/add';
+import {EditPage} from '../pages/edit/edit';
+import {NotePage} from '../pages/note/note';
+import { InterestsPage } from '../pages/interests/interests';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -38,7 +44,8 @@ export class MyApp {
       { title:'MyCalender', component: MyCalenderPage},
       { title :'Follwers', component: FollwersPage},
       { title :'Followings', component: FollowingPage},
-      { title :'Create Event ', component: EventsPage}
+      { title :'Create Event ', component: EventsPage},
+      { title :'My interests ', component: InterestsPage}
     ];
    // this.activePage=this.pages[0];
     /*
