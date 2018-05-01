@@ -13,7 +13,7 @@
 
 
 <ion-content >
-  <ng-container *ngFor="let seq of (userData | async)?.interests; let y = index"  >
+  <ng-container *ngFor="let seq of (item1|async)?.interests; let y = index"  >
   <ng-container *ngFor="let item of arrData; let i = index">
       <ng-container *ngIf = "seq.indexOf(item.type) > -1">
     <ion-item>

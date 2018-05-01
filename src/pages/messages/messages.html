@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>messages</ion-title>
+    <ion-title>Notifications</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ng-container *ngFor="let seq of noti">
+      <ion-list>
+          <ion-item-divider text-wrap>
+            <ion-thumbnail item-start>
+              <img src="{{seq.uphoto}}">
+            </ion-thumbnail>
+            <h2>{{seq.message}}</h2>
+            <p>{{seq.time}}</p>
+          </ion-item-divider>
+        </ion-list>
+      </ng-container>
 </ion-content>

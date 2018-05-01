@@ -4,9 +4,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
-import { FirebaseObjectObservable name } from 'angularfire2/database';
+//import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { HomePage } from '../home/home';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the ProfilePage page.
@@ -22,8 +23,11 @@ import { HomePage } from '../home/home';
 })
 export class ProfilePage{
 eventData = []
- userData : FirebaseObjectObservable<User>
+ userData : AngularFireObject<User>
  uesrEventsData = []
+ item1 : Observable<User>;
+  itemRef : AngularFireObject<any>;
+  
   
   constructor ( public navCtrl: NavController,
     private afAuth: AngularFireAuth ,
@@ -43,8 +47,10 @@ eventData = []
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-       this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
-       console.log(this.userData) ;
+       this.userData = this.afDatabase.object('user/'+ data.uid);
+       this.item1 = this.userData.valueChanges();
+
+       
        this.afDatabase.list('/user/'+ data.uid+'/RegEvents/').valueChanges().subscribe(
         _data => {
           this.uesrEventsData = _data ; 

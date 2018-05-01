@@ -37,7 +37,8 @@
 
     <p class="bostyle"></p>
 
-    <ng-container *ngFor="let seq of userEvents" >
+    <ng-container *ngIf= "!person.private">
+    <ng-container *ngFor="let seq of userEvents " >
       <ng-container *ngFor="let item of eventData ; let i = index">
               <ng-container *ngIf = "seq.eventName === item.name">
               <ion-list>
@@ -55,6 +56,14 @@
       
               </ng-container>
       </ng-container>
+      </ng-container>
+    </ng-container>
+
+      <ng-container *ngIf= "person.private" >
+          <ion-card-content >
+              This account is private . You can't see {{person.firstname}} {{person.lastname}}'s events
+            </ion-card-content>
+      
       </ng-container>
 
 </ion-content>

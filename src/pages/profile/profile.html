@@ -16,13 +16,14 @@
 <ion-content>
     <div class="profile-container">
         <div class="profile-img-circle">
-            <img src="{{(userData | async)?.photo}}" alt="">
+            <img src="{{(item1 | async)?.photo}}" alt="">
         </div>
       </div>
       <div class="profile-content">
-        <h2>{{(userData | async)?.firstname}} {{(userData | async)?.lastname}}</h2>
-        <h4>Followers : {{(userData | async)?.followers}} <ion-icon ios="ios-people" md="md-people"></ion-icon>  |  Following : {{(userData | async)?.following}} <ion-icon ios="ios-eye" md="md-eye"></ion-icon></h4>
-        <h4>{{(userData | async)?.address}} </h4>
+        <h2>{{(item1|async)?.firstname}} {{(item1|async)?.lastname}}</h2>
+        <h4>Followers : {{(item1|async)?.followers}} <ion-icon ios="ios-people" md="md-people"></ion-icon>  |  Following : {{(item1|async)?.following}} <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+         </h4>
+        <h4>{{(item1|async)?.address}} </h4>
       </div>
 
       <p class="bostyle"></p>
@@ -45,7 +46,10 @@
           </ion-item>
         </ion-list>
 
-        </ng-container>
+        
 </ng-container>
 </ng-container>
+</ng-container>
+
+
 </ion-content>

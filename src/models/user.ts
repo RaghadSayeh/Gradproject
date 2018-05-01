@@ -8,9 +8,10 @@ export interface User {
     followers : number ;
     RegEvents : string [];
     MyEvents : string[];
-    private : string ;
+    private : boolean ;
     address : string ;
     photo : URL ;
     followersArray : string[] ;
     followingArray : string[] ;
+    notifications : string[] ; 
 }
