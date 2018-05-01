@@ -6,6 +6,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
+import { forEach } from '@firebase/util/dist/esm/src/obj';
 
 @IonicPage()
 @Component({
@@ -15,11 +16,10 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 export class EventsPage {
 
   event = {} as Event ;
-  
-
-
+  arrUsers = [] ;
   arrData = [];
   arrDataId ;
+  arrIDs = []
 
   constructor (
     private afDatabase: AngularFireDatabase,
@@ -37,6 +37,17 @@ export class EventsPage {
       }
     );
 
+    this.afDatabase.list("/user/").valueChanges().subscribe(
+      _data => {
+        this.arrUsers = _data ; 
+      }
+    );
+    this.afDatabase.list("/IDS/").valueChanges().subscribe(
+      _data => {
+        this.arrIDs = _data ; 
+      }
+    );
+
   }
 
   ionViewDidLoad() {
@@ -46,8 +57,24 @@ export class EventsPage {
 
   createE(event: Event){
     event.regnumber = 0 ;
+
+    for(let per of this.arrUsers)
+    {
+      for(let ev of per.interests){
+        if(ev == event.type)
+        {
+          for(let yy of this.arrIDs){
+            if(per.email == yy.IDemail){
+              this.afDatabase.object('user/'+ yy.ID +'/notifications/'+ this.arrDataId).set({uphoto : event.photo , message : "New Event is added : "+ event.name + " , of type " + event.type , time : Date()})
+            }
+          }
+
+        }
+      }
+    }
     this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
-    //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
+    
+    
     
   }
 
