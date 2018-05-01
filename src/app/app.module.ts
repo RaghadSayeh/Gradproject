@@ -33,6 +33,10 @@ import { NavControllerBase } from 'ionic-angular/navigation/nav-controller-base'
 import {NgCalendarModule} from 'ionic2-calendar';
 import { SearchPage } from '../pages/search/search';
 import { FollowingPage } from '../pages/following/following';
+import {EditnPage} from '../pages/editn/editn';
+import { AddPage } from '../pages/add/add';
+import { EditPage } from '../pages/edit/edit';
+import {NotePage} from '../pages/note/note';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -47,11 +51,15 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+    EditPage,
+    AddPage,
+    NotePage,
     WelcomePage,
    LoginPage,
     SignupPage,
     AboutPage,
     ContactPage,
+    EditnPage,
     HomePage,
     TabsPage,
     ContPage,
@@ -63,7 +71,8 @@ const firebaseConfig = {
     FollwersPage,
     FollowingPage,
     InterestsPage,
-    MyCalenderPage
+    MyCalenderPage,
+    InterestsPage
   ],
   imports: [
     NgCalendarModule,
@@ -80,6 +89,9 @@ const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    InterestsPage,
+    NotePage,
+    EditPage,
     WelcomePage,
     LoginPage,
     MessagesPage,
@@ -94,9 +106,11 @@ const firebaseConfig = {
     ContPage,
     EventsPage,
     FollwersPage,
+    EditnPage,
     FollowingPage,
     InterestsPage,
-    MyCalenderPage
+    MyCalenderPage,
+    AddPage
   ],
   providers: [
     

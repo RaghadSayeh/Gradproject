@@ -12,7 +12,16 @@
 
 </ion-header>
 
-
 <ion-content padding>
+<ng-container *ngFor="let seq of uesrInteresrData">
+  <ion-item>
+<h2>{{seq}}</h2>
+    
+    <ion-buttons end>
+        <button (click)="Unfollow(seq.$key)"><ion-icon name="trash" color="secondary"></ion-icon></button>
+      </ion-buttons>
+  
+  </ion-item>
 
+</ng-container>
 </ion-content>
