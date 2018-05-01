@@ -15,6 +15,7 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 export class EventsPage {
 
   event = {} as Event ;
+  
 
 
   arrData = [];

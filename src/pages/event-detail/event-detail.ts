@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the EventDetailPage page.
@@ -20,7 +20,9 @@ import { AngularFireDatabase} from 'angularfire2/database';
 })
 export class EventDetailPage {
   person = {} as User;
-  userData : FirebaseObjectObservable<User>
+  userData : AngularFireObject<User>
+  item1 : Observable<User>;
+  itemRef : AngularFireObject<any>;
   uesrFollowers= []
   uesrFollowing= []
   followdisable :boolean ;
@@ -28,6 +30,14 @@ export class EventDetailPage {
   personID : string;
   eventData = []
   userEvents = []
+ userPhoto : URL ;
+ userfname : string ;
+ userlname : string ;
+ pri : boolean ;
+
+  
+  t : Date = new Date() ;
+  notificationData = []
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
@@ -64,7 +74,16 @@ export class EventDetailPage {
 
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-       this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+       this.userData = this.afDatabase.object('user/'+ data.uid);
+       this.item1 = this.userData.valueChanges();
+
+       this.itemRef = this.afDatabase.object('user/' + data.uid);
+       this.itemRef.snapshotChanges().subscribe(action => {
+       this.userPhoto = action.payload.val().photo;  
+       this.userfname = action.payload.val().firstname;
+       this.userlname = action.payload.val().lastname; 
+       this.pri = action.payload.val().private;    
+       });
        this.afDatabase.list('/user/'+ data.uid+'/followersArray/').valueChanges().subscribe(
         _data => {
           this.uesrFollowers = _data ; 
@@ -87,19 +106,24 @@ export class EventDetailPage {
   }
 
 
-  followPerson(person : User){
+  followPerson(person : User ){
+    
     this.person.followers += 1 ;
+    this.t = new Date();
+    //this.notificationData = [{uphoto :this.userData.photo , message : this.userData.firstname + this.userData.lastname + " started folloeing you .." , time :this.t}] ;
      this.afAuth.authState.subscribe(auth =>{
       this.afDatabase.object('user/'+ auth.uid+'/followingArray/'+ this.personID).set(this.person.email)
       this.afDatabase.object('user/'+ auth.uid+'/following/').set(this.uesrFollowing.length + 1)
       this.afDatabase.object('user/'+ this.personID +'/followersArray/'+ auth.uid).set(auth.email)
      this.afDatabase.object('user/'+ this.personID +'/followers/').set(this.person.followers )
+    this.afDatabase.object('user/'+ this.personID +'/notifications/'+ auth.uid).set({uphoto : this.userPhoto , message : this.userfname + " " + this.userlname+ "  started following you .." , time : Date()})
+    
     })
     
     this.followdisable = true ;
     this.unfollowdisable = false ;
-    //window.location.reload() ;
-    //this.ionViewDidLoad();
+    
+
   }
 
 

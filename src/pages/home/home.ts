@@ -6,12 +6,13 @@ import {AngularFireAuth} from "angularfire2/auth";
 import { WelcomePage } from '../welcome/welcome';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireObject } from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
 import { LoginPage } from '../login/login';
 import { min } from 'moment';
 import { DISABLED } from '@angular/forms/src/model';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -22,12 +23,15 @@ import { DISABLED } from '@angular/forms/src/model';
 export class HomePage {
   user = {} as User;
   //eventData :FirebaseObjectObservable<Event>
-  userData : FirebaseObjectObservable<User> 
+  
   USerserviceProvider: any;
   arrData = [] 
   userID ;
   sts=true ;
   isDisabled: boolean = false ;
+  userData : AngularFireObject<User>
+ item1 : Observable<User>;
+  itemRef : AngularFireObject<any>;
 
 
   constructor (
@@ -54,7 +58,8 @@ export class HomePage {
   ionViewWillLoad() {
     this.afAuth.authState.subscribe(data =>{
       if(data && data.email && data.uid){
-        this.userData = this.afDatabase.object('user/'+ data.uid).valueChanges();
+        this.userData = this.afDatabase.object('user/'+ data.uid);
+       this.item1 = this.userData.valueChanges();
        this.userID = data.uid ;
        }
      
