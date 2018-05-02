@@ -5,9 +5,10 @@
 </ion-header>
 
 <ion-content padding class="login">
+  <div><h1 style="font-size : 20px ; margin-top : 50px; margin-left : 80px ">Welcome Back!</h1></div>
 
-<div class="list-form">
-    <div><h1>Welcome Back!</h1></div>
+
+<div class="list-form">  
 <ion-list  style="margin-top:30px;margin-bottom: 30px">
 <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
 <ion-label floating >Email Address</ion-label>
@@ -20,7 +21,7 @@
 </ion-list>
 </div>
 
-<button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="login(user)">Login</button>
+<button style="margin-top: 30px;height: 35px;font-size: 14px;border:1px solid white; background-color:#ff99cc;" ion-button  block  (click)="login(user)">Login</button>
 <div text-center style="text-decoration: underline;margin-top:20px;color:white;font-size: 14px;"  (click)="forgotPwd()">Forgot Password</div>
-  <button ion-button style="background-color: transparent;color:white;border-color:white;border:1px solid white;margin-top:20px;height: 35px;font-size: 14px;"  block  (click)="signUp()">Register</button>
+  <button ion-button style="background-color: #ff99cc;color:white;border-color:white;border:1px solid white;margin-top:20px;height: 35px;font-size: 14px;"  block  (click)="signUp()">Register</button>
 </ion-content>

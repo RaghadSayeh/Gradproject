@@ -7,6 +7,8 @@ import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import { forEach } from '@firebase/util/dist/esm/src/obj';
+import {FileChooser} from '@ionic-native/file-chooser';
+import {File} from '@ionic-native/file';
 
 @IonicPage()
 @Component({
@@ -26,7 +28,7 @@ export class EventsPage {
     public navCtrl: NavController,
      public navParams: NavParams,
      public laodctrl: LoadingController,
-     public toastctrl:ToastController,
+     public toastctrl:ToastController, private filechooser: FileChooser, private file:File,
      public myUserProvider:UsersserviceProvider,
      public alertctrl:
   AlertController) {
@@ -78,6 +80,41 @@ export class EventsPage {
     
   }
 
+
+  choose(){
+    this.filechooser.open().then((uri)=>{
+      alert(uri);
+
+      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
+        alert(JSON.stringify(newUrl));
+
+        let dirPath=newUrl.nativeURL;
+        let dirPathSegments=dirPath.split('/')
+        dirPathSegments.pop()
+        dirPath=dirPathSegments.join('/')
+
+        this.file.readAsArrayBuffer(dirPath,newUrl.name).then(async (buffer)=>{
+          await this.upload(buffer,newUrl.name);
+        })
+      }
+    )
+
+    }
+  )
+  }
+
+  async upload(buffer,name){
+    //blob is a special data structure which is used to transfer file  from one place to another
+    let blob=new Blob([buffer], {type:"image/jpeg"}); 
+  
+    let storage=firebase.storage();
+    storage.ref('/images'+name).put(blob).then((d)=>{
+      alert("Done");
+    }).catch((error)=>{
+      alert(JSON.stringify(error));
+    })
+  
+  }
 
 
   
