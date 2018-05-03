@@ -4,21 +4,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
-<<<<<<< HEAD
 import { FirebaseObjectObservable  } from 'angularfire2/database';
-=======
-//import { FirebaseObjectObservable } from 'angularfire2/database';
->>>>>>> e002c22f338c65d0facd125e7750a687f5062d06
 import { AngularFireObject }  from 'angularfire2/database';
 import { HomePage } from '../home/home';
 import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({

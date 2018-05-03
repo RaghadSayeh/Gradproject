@@ -1,0 +1,36 @@
+{
+    "items":
+    [
+        {
+            "name":"sport"
+        },
+        {
+            "name":"fashion"
+        },
+        {
+            "name":"music"
+        },
+        {
+            "name":"science"
+        },
+        {
+            "name":"technology"
+        },
+        {
+            "name":"art"
+        },
+        {
+            "name":"business"
+        },
+        {
+            "name":"political"
+        },
+        {
+            "name":"culture"
+        },
+        {
+            "name":"weddings"
+        }
+
+    ]
+}

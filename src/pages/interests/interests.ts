@@ -5,6 +5,8 @@ import { AngularFireObject }  from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -12,19 +14,26 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'interests.html',
 })
 export class InterestsPage {
+  information = [];
   userData : FirebaseObjectObservable<User>
  // removeitems : FirebaseObjectObservable<User>
   interestData = []
   uesrInteresrData = []
+  arrDataId
   constructor(public navCtrl: NavController, public navParams: NavParams , private afAuth: AngularFireAuth ,
-    private afDatabase: AngularFireDatabase,) {
+    private afDatabase: AngularFireDatabase,private http:Http) {
    //   this.removeitems=this.afDatabase.list('/user/interests');
       this.afDatabase.list("/user/").valueChanges().subscribe(
         _data => {
           this.interestData = _data ; 
           console.log(this.interestData) ;
+          this.arrDataId = this.interestData.length ;
         }
       );
+      let localData=this.http.get('assets/information.json').map(res=>res.json().items);
+      localData.subscribe(data=>{
+        this.information=data;
+      });
   }
 
   ionViewDidLoad() {
@@ -41,15 +50,11 @@ export class InterestsPage {
         }
       );
        }
-
-      }
+       }
   );
 
   }
 
-  Unfollow(idItem){
-    //this.afDatabase.list('/user').remove(this.uesrInteresrData[idItem]);
-    
-  }
+  
 
 }
