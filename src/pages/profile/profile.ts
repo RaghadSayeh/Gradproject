@@ -4,7 +4,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import { Event } from '../../models/eventDet';
+<<<<<<< HEAD
 import { FirebaseObjectObservable  } from 'angularfire2/database';
+=======
+>>>>>>> 32ca219d2393e50818d16a2bf894854724b49af0
 import { AngularFireObject }  from 'angularfire2/database';
 import { HomePage } from '../home/home';
 import { Observable } from 'rxjs/Observable';

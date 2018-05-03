@@ -112,9 +112,9 @@ openPrice(item : Event , s:number){
         
         handler: data => {
           this.afAuth.authState.subscribe(auth =>{
-            this.afDatabase.object('user/'+ auth.uid+'/RegEvents/'+item.name).set(data)
+            this.afDatabase.object('user/'+ this.userID+'/RegEvents/'+item.name).set(data)
             .then(() => this.navCtrl.setRoot(HomePage))
-            this.afDatabase.object('event/'+ s + '/regNames/' + auth.uid  ).set(auth.email)
+            this.afDatabase.object('event/'+ s + '/regNames/' + this.userID  ).set(auth.email)
             this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1})
             console.log('Saved clicked')
           }) 

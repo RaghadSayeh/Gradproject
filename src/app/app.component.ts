@@ -46,6 +46,7 @@ export class MyApp {
       { title :'Followings', component: FollowingPage},
       { title :'Create Event ', component: EventsPage},
       { title :'My interests ', component: InterestsPage}
+      
     ];
    // this.activePage=this.pages[0];
     /*
@@ -94,5 +95,9 @@ initializeApp() {
     this.statusBar.styleDefault();
     this.splashScreen.hide();
   });
+}
+
+logout(){
+
 }
 }

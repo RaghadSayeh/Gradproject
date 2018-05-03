@@ -1,11 +1,11 @@
 page-welcome {
   #welcome{
-        background-image:url("../assets/imgs/3.jpg");
+        background-image:url("../assets/imgs/back.jpg");
         background-size: 100% 100%
     }
     .marginTop{
-        margin-top:150px;
-        margin-bottom: 9px
+        margin-top:50px;
+        
     }
     button{
         display: block;
@@ -21,10 +21,10 @@ page-welcome {
         margin-right:6px;
     }
     .logo{
-        height: 80px ;
-        width: 80px;
-        img {
-            border-radius: 30% ;
-        }
+        margin-left: 60px ;
+        margin-top: 50px;
+        height: 150px ;
+        width: 170px;
+        
     }
 }

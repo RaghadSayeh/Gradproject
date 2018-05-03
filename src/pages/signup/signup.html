@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
-     <ion-title>signup</ion-title>
+     <ion-title>Sign Up for Free</ion-title>
    </ion-navbar>
  </ion-header>
  <ion-content padding class="signup">
      
     <div class="list-form1">
-        <div><h1>Sign Up for Free</h1></div>
-    <ion-list  style="margin-top:30px;margin-bottom: 30px">
-    <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+    
+    <ion-list  style="margin-top:1px;margin-bottom: 15px">
+    <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;background:none;border-bottom:1px solid white;box-shadow:none;">
       <ion-label floating>First Name</ion-label>
       <ion-input style="border-bottom-color:white;box-shadow:none;" type="text" [(ngModel)]="user.firstname" name="firstname" ><ion-icon class="ico" name="person"></ion-icon></ion-input>
     </ion-item>
@@ -38,7 +38,7 @@
      </ion-item>
     
     </ion-list>
-    <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="chooseInterests(user)">Choose Interests</button>
-    <button style="margin-top: 30px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="dosignup(user)">Sign Up</button>
+    <button style="background-color: #ff99cc;margin-top: 30px;height: 35px;font-size: 14px;" ion-button  block  (click)="chooseInterests(user)">Choose Interests</button>
+    <button style="background-color: #ff99cc;margin-top: 30px;height: 35px;font-size: 14px;" ion-button  block  (click)="dosignup(user)">Sign Up</button>
     </div>
  </ion-content>
