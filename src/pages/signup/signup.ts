@@ -48,7 +48,7 @@ export class SignupPage {
     console.log(result);
     this.afAuth.authState.subscribe(auth =>{
       this.afDatabase.object('user/'+ auth.uid).set(this.user)
-      .then(() => this.navCtrl.setRoot(LoginPage))
+      .then(() => this.navCtrl.push(LoginPage))
       this.iduser.ID = auth.uid 
       this.iduser.IDemail = auth.email 
       this.afDatabase.object('IDS/'+ this.user.firstname ).set(this.iduser)

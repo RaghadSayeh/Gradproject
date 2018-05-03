@@ -1,9 +1,10 @@
 <ion-header>
   <ion-navbar>
+      <ion-title>Add Event </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding style="background-image:url('../assets/imgs/10.jpg');background-size:cover">
+<ion-content padding style="background-image:url('../assets/imgs/3.jpg');background-size:cover">
   <div class="design-event">
     <ion-list style="margin-top:20px;margin-bottom:15px;padding:5px;">
          <!--item1-->
@@ -115,8 +116,8 @@
                   <ion-input type="number" [(ngModel)]="event.maxnumber"></ion-input>
                 </ion-item>
                 </ion-list>
-                  <button ion-button block (click)="choose()">Upload image</button>
-         <button ion-button block  outline style="color:white;border-color:white"  (click)="createE(event)">Create Event</button>
+                  <button ion-button block style="background-color: #ff99cc; border-color:white" (click)="choose()">Upload image</button>
+         <button ion-button block   style="background-color: #ff99cc;border-color:white"  (click)="createE(event)">Create Event</button>
         
     
     
