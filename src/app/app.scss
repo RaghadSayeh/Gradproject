@@ -18,3 +18,32 @@
 {
     background-color:map-get($colors , darkgreen ) 
 }
+.profile{
+    position: relative;
+    height:200px;
+}
+.profile-image{
+    position:absolute;
+    left:40%;
+    right:95;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+.profile-image img{
+    height: 120px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 10%;
+}
+.profile-image p{
+    text-align: center;
+    font-size: 1.5em !important;
+    color:#fff;
+}
+.bg-color{
+    background-color: #cc3399!important;
+}
+ion-list button{
+    color: #fff;
+    background-color: transparent !important;
+}

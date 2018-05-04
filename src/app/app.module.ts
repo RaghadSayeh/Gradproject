@@ -37,6 +37,7 @@ import {EditnPage} from '../pages/editn/editn';
 import { AddPage } from '../pages/add/add';
 import { EditPage } from '../pages/edit/edit';
 import {NotePage} from '../pages/note/note';
+import {OthersPage} from '../pages/others/others';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -51,6 +52,7 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+    OthersPage,
     EditPage,
     AddPage,
     NotePage,
@@ -92,6 +94,7 @@ const firebaseConfig = {
     InterestsPage,
     NotePage,
     EditPage,
+    OthersPage,
     WelcomePage,
     LoginPage,
     MessagesPage,

@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, MenuController} from 'ionic-angular';
+import { Component, ViewChild, Injectable } from '@angular/core';
+import { Platform, Nav, MenuController,App} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SignupPage } from '../pages/signup/signup';
@@ -25,6 +25,7 @@ import {AddPage} from '../pages/add/add';
 import {EditPage} from '../pages/edit/edit';
 import {NotePage} from '../pages/note/note';
 import { InterestsPage } from '../pages/interests/interests';
+import {OthersPage} from '../pages/others/others';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,19 +34,20 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = WelcomePage;
   activePage: any;
-  pages: Array<{title: string, component :any}>;
+  pages: Array<{title: string, component :any,icon:string}>;
  
-  constructor( public platform: Platform, public statusBar: StatusBar,
+  constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen ,public afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth ) {
    this.initializeApp();
     this.pages = [
-      { title:'Home', component: HomePage},
-      { title:'MyCalender', component: MyCalenderPage},
-      { title :'Follwers', component: FollwersPage},
-      { title :'Followings', component: FollowingPage},
-      { title :'Create Event ', component: EventsPage},
-      { title :'My interests ', component: InterestsPage}
+      { title:'Home', component: HomePage,icon:"md-home"},
+      { title:'MyCalender', component: MyCalenderPage,icon:"md-calendar"},
+      { title :'Followers', component: FollwersPage,icon:"md-people"},
+      { title :'Followings', component: FollowingPage,icon:"md-people"},
+      { title :'Create Event ', component: EventsPage,icon:"md-create"},
+      { title :'My interests ', component: InterestsPage,icon:"md-list-box"},
+      { title :'Other interests ', component: OthersPage,icon:"md-list-box"}
       
     ];
    // this.activePage=this.pages[0];
@@ -97,7 +99,5 @@ initializeApp() {
   });
 }
 
-logout(){
 
-}
 }

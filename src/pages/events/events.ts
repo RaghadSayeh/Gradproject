@@ -6,14 +6,8 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
 import { HomePage } from '../home/home';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
-<<<<<<< HEAD
 import {File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
-=======
-import { forEach } from '@firebase/util/dist/esm/src/obj';
-import {FileChooser} from '@ionic-native/file-chooser';
-import {File} from '@ionic-native/file';
->>>>>>> 32ca219d2393e50818d16a2bf894854724b49af0
 
 @IonicPage()
 @Component({
@@ -36,9 +30,8 @@ export class EventsPage {
      public toastctrl:ToastController, private filechooser: FileChooser, private file:File,
      public myUserProvider:UsersserviceProvider,
      public alertctrl:
-  AlertController,
-private file:File,
-private filechooser:FileChooser) {
+  AlertController
+) {
     this.afDatabase.list("/event/").valueChanges().subscribe(
       _data => {
         this.arrData = _data ; 
@@ -80,7 +73,6 @@ private filechooser:FileChooser) {
       }
     }
     this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
-<<<<<<< HEAD
     //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
     }
 choose(){
@@ -110,56 +102,12 @@ this.filechooser.open().then((uri)=>{
   let storage=firebase.storage();
   storage.ref('images/'+ name).put(blob).then((d)=>{
     alert("Done");
-=======
-    
-    
-    
-  }
->>>>>>> 32ca219d2393e50818d16a2bf894854724b49af0
 
   }).catch((error)=>{
     alert(JSON.stringify(error));
   })
 
-<<<<<<< HEAD
 }
-=======
-  choose(){
-    this.filechooser.open().then((uri)=>{
-      alert(uri);
-
-      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
-        alert(JSON.stringify(newUrl));
-
-        let dirPath=newUrl.nativeURL;
-        let dirPathSegments=dirPath.split('/')
-        dirPathSegments.pop()
-        dirPath=dirPathSegments.join('/')
-
-        this.file.readAsArrayBuffer(dirPath,newUrl.name).then(async (buffer)=>{
-          await this.upload(buffer,newUrl.name);
-        })
-      }
-    )
-
-    }
-  )
-  }
-
-  async upload(buffer,name){
-    //blob is a special data structure which is used to transfer file  from one place to another
-    let blob=new Blob([buffer], {type:"image/jpeg"}); 
-  
-    let storage=firebase.storage();
-    storage.ref('/images'+name).put(blob).then((d)=>{
-      alert("Done");
-    }).catch((error)=>{
-      alert(JSON.stringify(error));
-    })
-  
-  }
-
->>>>>>> 32ca219d2393e50818d16a2bf894854724b49af0
 
   
   }

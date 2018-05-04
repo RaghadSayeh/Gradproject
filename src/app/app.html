@@ -1,8 +1,16 @@
 <ion-menu [content]="content">
- <<ion-content padding>
-   <ion-list>
-    <button menu-close ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}</button>
-    
+ <ion-content class="bg-color">
+   <div class="profile">
+     <div class="profile-image">
+       <img src="assets/imgs/logo.png">
+
+     </div>
+   </div>
+   <ion-list no-lines>
+    <button menu-close ion-item *ngFor="let p of pages" (click)="openPage(p)">
+    <ion-icon [name]="p.icon" item-left></ion-icon>
+    {{p.title}}</button>
+   
   </ion-list>
  </ion-content>
 
