@@ -38,6 +38,7 @@ import { AddPage } from '../pages/add/add';
 import { EditPage } from '../pages/edit/edit';
 import {NotePage} from '../pages/note/note';
 import {OthersPage} from '../pages/others/others';
+import { OwnEventsPage } from '../pages/own-events/own-events';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -72,6 +73,7 @@ const firebaseConfig = {
     SearchPage,
     FollwersPage,
     FollowingPage,
+    OwnEventsPage,
     InterestsPage,
     MyCalenderPage,
     InterestsPage
@@ -99,6 +101,7 @@ const firebaseConfig = {
     LoginPage,
     MessagesPage,
     ProfilePage,
+    OwnEventsPage,
     SignupPage,
     EventDetailPage,
     AboutPage,

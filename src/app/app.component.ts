@@ -26,6 +26,7 @@ import {EditPage} from '../pages/edit/edit';
 import {NotePage} from '../pages/note/note';
 import { InterestsPage } from '../pages/interests/interests';
 import {OthersPage} from '../pages/others/others';
+import { OwnEventsPage } from '../pages/own-events/own-events';
 
 @Component({
   templateUrl: 'app.html'
@@ -47,38 +48,11 @@ export class MyApp {
       { title :'Followings', component: FollowingPage,icon:"md-people"},
       { title :'Create Event ', component: EventsPage,icon:"md-create"},
       { title :'My interests ', component: InterestsPage,icon:"md-list-box"},
-      { title :'Other interests ', component: OthersPage,icon:"md-list-box"}
+      { title :'Other interests ', component: OthersPage,icon:"md-list-box"},
+      { title :'Your Own Events ', component: OwnEventsPage ,icon:"md-filing"}
       
     ];
-   // this.activePage=this.pages[0];
-    /*
-    var that = this;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        //User is signed in
-        that.rootPage=TabsPage;
-        
-      } else {
-        // User is signed out.
-        // ...
-        that.rootPage=WelcomePage;
-        }
-    });
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-    */
- /* initializeApp(){
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }*/
+   
 }
   openPage(pages){
     this.nav.push(pages.component);

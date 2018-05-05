@@ -35,8 +35,6 @@ export class WelcomePage {
     contactus(){
       this.navCtrl.push(ContPage);
     }
-    createEvent(){
-      this.navCtrl.push(EventsPage);
-    }
+   
 
 }

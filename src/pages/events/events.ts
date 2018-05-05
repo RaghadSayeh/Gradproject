@@ -8,6 +8,7 @@ import { HomePage } from '../home/home';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import {File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -26,6 +27,7 @@ export class EventsPage {
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController,
      public navParams: NavParams,
+     private afAuth: AngularFireAuth ,
      public laodctrl: LoadingController,
      public toastctrl:ToastController, private filechooser: FileChooser, private file:File,
      public myUserProvider:UsersserviceProvider,
@@ -55,6 +57,8 @@ export class EventsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsPage');
   }
+
+
   createE(event: Event){
     event.regnumber = 0 ;
 
@@ -72,9 +76,19 @@ export class EventsPage {
         }
       }
     }
-    this.afDatabase.object('event/'+this.arrDataId).set(this.event).then(()=>this.navCtrl.push(WelcomePage))
-    //this.afDatabase.list("/event/").push(this.event).then(()=>this.navCtrl.push(WelcomePage));
+
+    this.afAuth.authState.subscribe(auth =>{
+      this.afDatabase.object('user/'+ auth.uid+'/ownEvents/'+ this.event.name).set({email:this.event.email , name:this.event.name , photo:this.event.photo})
+      this.afDatabase.object('event/'+this.event.name).set(this.event)
+
+    });
+
     }
+
+
+
+
+
 choose(){
 this.filechooser.open().then((uri)=>{
   alert(uri);

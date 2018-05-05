@@ -14,4 +14,5 @@ export interface User {
     followersArray : string[] ;
     followingArray : string[] ;
     todos: string [];
+    ownEvents : string[];
 }

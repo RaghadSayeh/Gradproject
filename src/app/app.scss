@@ -26,14 +26,14 @@
     position:absolute;
     left:40%;
     right:95;
-    top:50%;
+    top:40%;
     transform: translate(-50%,-50%);
 }
 .profile-image img{
-    height: 120px;
-    width: 200px;
+    height: 110px;
+    width: 150px;
     object-fit: cover;
-    border-radius: 10%;
+    //border-radius: 10%;
 }
 .profile-image p{
     text-align: center;
@@ -41,7 +41,7 @@
     color:#fff;
 }
 .bg-color{
-    background-color: #cc3399!important;
+    background-color: #f07cb6!important;
 }
 ion-list button{
     color: #fff;
