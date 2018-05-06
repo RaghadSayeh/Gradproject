@@ -27,6 +27,7 @@ import {NotePage} from '../pages/note/note';
 import { InterestsPage } from '../pages/interests/interests';
 import {OthersPage} from '../pages/others/others';
 import { OwnEventsPage } from '../pages/own-events/own-events';
+import {ShowEventPage} from '../pages/show-event/show-event'
 
 @Component({
   templateUrl: 'app.html'
@@ -47,9 +48,9 @@ export class MyApp {
       { title :'Followers', component: FollwersPage,icon:"md-people"},
       { title :'Followings', component: FollowingPage,icon:"md-people"},
       { title :'Create Event ', component: EventsPage,icon:"md-create"},
-      { title :'My interests ', component: InterestsPage,icon:"md-list-box"},
-      { title :'Other interests ', component: OthersPage,icon:"md-list-box"},
-      { title :'Your Own Events ', component: OwnEventsPage ,icon:"md-filing"}
+      { title :'Your Own Events ', component: OwnEventsPage ,icon:"md-filing"},
+      { title :'Edit your profile ', component: InterestsPage,icon:"md-list-box"}
+      
       
     ];
    

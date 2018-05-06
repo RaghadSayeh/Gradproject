@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import {  IonicPage, NavController, LoadingController, ToastController, NavParams, AlertController } from 'ionic-angular';
-//import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import * as firebase from 'firebase';
 import {LoginPage} from '../login/login';
-
 import { User } from '../../models/user';
 import {AngularFireAuth} from "angularfire2/auth";
 import { AngularFireDatabase } from 'angularfire2/database';

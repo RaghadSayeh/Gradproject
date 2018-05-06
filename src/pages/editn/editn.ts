@@ -1,6 +1,6 @@
 import { Component ,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
-import {FirebaseListObservable} from 'angularfire2/database';
+import {FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AddPage } from '../add/add';
 import {EditPage} from '../edit/edit';

@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
+import { ShowEventPage } from '../show-event/show-event';
 
 /**
  * Generated class for the OwnEventsPage page.
@@ -59,6 +60,11 @@ export class OwnEventsPage {
       this.afDatabase.object('event/'+ seqN ).remove()
        }
       });
+
+  }
+
+  show(seqN : string){
+    this.navCtrl.push(ShowEventPage , {'eventName' : seqN });
 
   }
 

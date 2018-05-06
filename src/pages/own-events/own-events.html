@@ -22,7 +22,7 @@
               <img src="{{seq.photo}}">
             </ion-thumbnail>
             <h2>{{seq.name}}</h2>
-            <button ion-button clear item-end (click)="show(seq)">Show</button>
+            <button ion-button clear item-end (click)="show(seq.name)">Show</button>
             <button ion-button clear item-end (click)="delete(seq.name)">Delete</button>
           </ion-item>
         </ion-list>

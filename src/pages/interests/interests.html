@@ -2,37 +2,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>interests</ion-title>
+    <ion-title>Edit your Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-<ion-list class="accordion-list">
-    <ng-container *ngFor="let seq of information" no-lines no-padding>
-    <ng-container *ngFor="let item of uesrInteresrData; let index=i" no-lines no-padding> 
- 
-     
 
-    <ng-container *ngIf="item === seq.name">
-       
-      <ion-item no-lines>
-         {{seq.name}}
-        <ion-buttons end>
-            <button><ion-icon name="checkbox" color="secondary"></ion-icon>
-           </button>
-          </ion-buttons>
+    <ion-list  style="margin-top:1px;margin-bottom: 15px">
+        <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;background:none;border-bottom:1px solid white;box-shadow:none;">
+          <ion-label >First Name</ion-label>
+          <ion-input style="border-bottom-color:white;box-shadow:none;"  type="text" [(ngModel)]="userfname"  ><ion-icon class="ico" name="person"></ion-icon></ion-input>
         </ion-item>
+        <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+          <ion-label floating>Last Name</ion-label>
+          <ion-input style="border-bottom-color:white;box-shadow:none;"  type="text" [(ngModel)]="userlname"  ></ion-input>
+          </ion-item>
+        <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+          <ion-label floating>Address</ion-label>
+          <ion-input style="border-bottom-color:white;box-shadow:none;"  type="text" [(ngModel)]="uaddress"  ></ion-input>
+        </ion-item>
+        <ion-item style="padding:0px !important; border-bottom:none !important ;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+          <ion-label floating>Password</ion-label>
+          <ion-input style="border-bottom-color:white;box-shadow:none;"  type="password" [(ngModel)]="upassword"  ></ion-input>
+        </ion-item>
+        <ion-item style="padding:0px !important; border-bottom:none !important ;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+        <ion-label style="padding-left:10px">Private </ion-label>
+        <ion-toggle  checked="pri" [(ngModel)]="pri"></ion-toggle>
+         </ion-item>
+        </ion-list>
 
-    </ng-container>
-  </ng-container>
-</ng-container>
+        <button style="background-color: #ff99cc;margin-top: 30px;height: 35px;font-size: 14px;" ion-button  block  (click)="updateInterests()">Update Interests</button>
+       <button style="background-color: #ff99cc;margin-top: 30px;height: 35px;font-size: 14px;" ion-button  block  (click)="updateProfile(user)">Update Profile</button>
     
-
-    
-  
-           
-         
-</ion-list>
 
 </ion-content>
