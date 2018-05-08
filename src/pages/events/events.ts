@@ -9,6 +9,7 @@ import { UsersserviceProvider } from '../../providers/usersservice/usersservice'
 import {File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { OwnEventsPage } from '../own-events/own-events';
 
 @IonicPage()
 @Component({
@@ -82,6 +83,8 @@ export class EventsPage {
       this.afDatabase.object('event/'+this.event.name).set(this.event)
 
     });
+
+    this.navCtrl.push(OwnEventsPage);
 
     }
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as moment from 'moment';
 import { ViewController } from 'ionic-angular/navigation/view-controller';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -9,16 +11,23 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
   templateUrl: 'event-modal.html',
 })
 export class EventModalPage {
-event ={startTime: new Date().toISOString(),endTime :new Date().toISOString(),allDay :false}
+event ={name  , startTime: new Date().toISOString(), endTime :new Date().toISOString(),allDay :false}
 minDate =new Date().toISOString();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, 
+    private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
+    public navParams: NavParams,private viewCtrl: ViewController) {
     let preselectedDate= moment(this.navParams.get('selectedDay')).format();
     this.event.startTime=preselectedDate;
     this.event.endTime=preselectedDate;
   }
 
-  save(){
+  save(eventp :any){
+    this.afAuth.authState.subscribe(auth =>{
+      this.afDatabase.object('user/'+ auth.uid +'/todos/'+ eventp.name ).set(eventp)
+        
+       });
 this.viewCtrl.dismiss(this.event);
   }
 

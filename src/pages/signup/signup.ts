@@ -27,11 +27,8 @@ export class SignupPage {
     private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController, public navParams: NavParams,
-    public alertctrl:AlertController
-    
-    //public usersserviceProvider : UsersserviceProvider, 
-    //public toastCtrl: ToastController, public loadingCtrl: LoadingController
-  ) {
+    public alertctrl:AlertController) {
+      
   }
 
   ionViewDidLoad() {
@@ -122,6 +119,7 @@ export class SignupPage {
         user.interests = data ;
         user.followers = 0 ;
         user.following = 0 ;
+        user.badge = 0 ;
         console.log('Checkbox data:', data);
         this.testCheckboxOpen = false;
         this.testCheckboxResult = data;

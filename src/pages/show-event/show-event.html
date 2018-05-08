@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>showEvent</ion-title>
+    <ion-title>{{evname}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="showev">
 
+  <p>Description : {{evData1.desc}}</p>
+  <p>Email : {{evData1.email}}</p>
+  <p>Location : {{evData1.city}}, {{evData1.location}}</p>
+  <p>Date : {{evData1.day}} of {{evData1.month}} {{evData1.year}}</p>
+  <p>Time : {{evData1.time}}</p>
+  <p>Number of registered : {{evData1.regnumber}}</p>
+  <p>Max Number of Attendence: {{evData1.maxnumber}}</p>
+  <p class="bostyle"></p>
+
+    <ion-list inset >
+        <ion-list-header>
+            Registered names :
+          </ion-list-header>
+        <ion-item start *ngFor="let seq of evData" >
+          {{seq.name}}
+        </ion-item> 
+      </ion-list>
+    
 </ion-content>

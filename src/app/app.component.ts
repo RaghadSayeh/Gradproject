@@ -49,7 +49,8 @@ export class MyApp {
       { title :'Followings', component: FollowingPage,icon:"md-people"},
       { title :'Create Event ', component: EventsPage,icon:"md-create"},
       { title :'Your Own Events ', component: OwnEventsPage ,icon:"md-filing"},
-      { title :'Edit your profile ', component: InterestsPage,icon:"md-list-box"}
+      { title :'Edit your profile ', component: InterestsPage,icon:"md-list-box"},
+      { title :'Log out ', component: WelcomePage,icon:"log-out"}
       
       
     ];

@@ -7,6 +7,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import {EditnPage} from '../editn/editn';
 import { NotePage } from '../note/note';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -26,7 +27,12 @@ calendar ={
   currentDate: this.selectedDay
 }
 
-  constructor( private afDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams, private madalCtrl: ModalController, private alerCtrl: AlertController ){
+  constructor( private afDatabase: AngularFireDatabase,
+    private afAuth: AngularFireAuth,
+    public navCtrl: NavController,
+     public navParams: NavParams,
+      private madalCtrl: ModalController, 
+      private alerCtrl: AlertController ){
    //this.toDoList = this.afDatabase.list('/todos');
    this.afDatabase.list("/todos/").valueChanges().subscribe(
     _data => {
@@ -38,9 +44,25 @@ calendar ={
 
   }
 
-  addEvent(){
-    
-    this.navCtrl.push(NotePage);
+   addEvent(){
+      let modal=this.madalCtrl.create('EventModalPage',{selectedDay:this.selectedDay});
+      modal.present();
+  
+      modal.onDidDismiss(data =>{
+        if(data){
+          let eventData= data;
+          eventData.startTime=new Date(data.startTime);
+          eventData.endTime=new Date(data.endTime);
+          
+          let events=this.eventSource;
+          events.push(eventData);
+          this.eventSource=[];
+          setTimeout(() => {
+            this.eventSource=events;
+          });
+  
+        }
+      });
   }
   delete(idTask){
     this.toDoList.remove(idTask);

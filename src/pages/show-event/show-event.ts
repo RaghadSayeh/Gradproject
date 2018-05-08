@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Event } from '../../models/eventDet';
 
 /**
  * Generated class for the ShowEventPage page.
@@ -15,7 +17,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ShowEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  evname : string ;
+  evData = [] 
+  evData1 = {} 
+  
+ 
+
+  constructor(public navCtrl: NavController,
+    private afDatabase: AngularFireDatabase,
+     public navParams: NavParams) {
+
+    this.evname = this.navParams.get('eventName');
+
+    this.afDatabase.object('/event/' + this.evname ).valueChanges().subscribe(
+      _data => {
+        this.evData1 = _data ; 
+
+      }
+    );
+
+    this.afDatabase.list('/event/' + this.evname + '/regNames/').valueChanges().subscribe(
+      _data => {
+        this.evData = _data ; 
+
+      }
+    );
+
+   
   }
 
   ionViewDidLoad() {

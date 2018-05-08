@@ -32,6 +32,8 @@ export class HomePage {
   userData : AngularFireObject<User>
  item1 : Observable<User>;
   itemRef : AngularFireObject<any>;
+  userfname : string ;
+  userlname : string;
 
 
   constructor (
@@ -61,6 +63,14 @@ export class HomePage {
         this.userData = this.afDatabase.object('user/'+ data.uid);
        this.item1 = this.userData.valueChanges();
        this.userID = data.uid ;
+       this.itemRef = this.afDatabase.object('user/' + data.uid);
+       this.itemRef.snapshotChanges().subscribe(action => {
+       //this.userPhoto = action.payload.val().photo;  
+       this.userfname = action.payload.val().firstname;
+       this.userlname = action.payload.val().lastname; 
+      // this.pri = action.payload.val().private;    
+       });
+       
        }
      
       });
@@ -113,10 +123,9 @@ openPrice(item : Event , s:number){
         handler: data => {
           this.afAuth.authState.subscribe(auth =>{
             this.afDatabase.object('user/'+ this.userID+'/RegEvents/'+item.name).set(data)
+            this.afDatabase.object('event/'+ item.name + '/regNames/'  + auth.uid ).set({email : auth.email , name : this.userfname + " "+ this.userlname })
+            this.afDatabase.object('event/'+item.name).update({"regnumber" : item.regnumber+1})
             .then(() => this.navCtrl.setRoot(HomePage))
-            this.afDatabase.object('event/'+ s + '/regNames/' + this.userID  ).set(auth.email)
-            this.afDatabase.object('event/'+s).update({"regnumber" : item.regnumber+1})
-            console.log('Saved clicked')
           }) 
         }
       },
