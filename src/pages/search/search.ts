@@ -68,16 +68,16 @@ export class SearchPage {
 }
 
 
-  getItems(ev: any) {
-    // set val to the value of the searchbar
-    let val = ev.target.value;
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.arrUsers = this.arrUsers.filter((item) => {
-        return (item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+getItems(ev: any) {
+      // set val to the value of the searchbar
+     let val = ev.target.value;
+      // if the value is an empty string don't filter the items
+      if (val && val.trim() != '') {
+        this.arrUsers = this.arrUsers.filter((item) => {
+          return (item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      }
     }
-  }
 
   showPage(item: User){
     for(let yy of this.arrIDs){

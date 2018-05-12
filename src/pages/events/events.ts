@@ -35,19 +35,19 @@ export class EventsPage {
      public alertctrl:
   AlertController
 ) {
-    this.afDatabase.list("/event/").valueChanges().subscribe(
+    this.afDatabase.list('/event/').valueChanges().subscribe(
       _data => {
         this.arrData = _data ; 
         this.arrDataId = this.arrData.length ;
       }
     );
 
-    this.afDatabase.list("/user/").valueChanges().subscribe(
+    this.afDatabase.list('/user/').valueChanges().subscribe(
       _data => {
         this.arrUsers = _data ; 
       }
     );
-    this.afDatabase.list("/IDS/").valueChanges().subscribe(
+    this.afDatabase.list('/IDS/').valueChanges().subscribe(
       _data => {
         this.arrIDs = _data ; 
       }
@@ -60,17 +60,17 @@ export class EventsPage {
   }
 
 
-  createE(event: Event){
-    event.regnumber = 0 ;
+  createE(ev : Event){
+    ev.regnumber = 0 ;
 
     for(let per of this.arrUsers)
     {
-      for(let ev of per.interests){
-        if(ev == event.type)
+      for(let evty of per.interests){
+        if(evty == ev.type)
         {
           for(let yy of this.arrIDs){
             if(per.email == yy.IDemail){
-              this.afDatabase.object('user/'+ yy.ID +'/notifications/'+ this.arrDataId).set({uphoto : event.photo , message : "New Event is added : "+ event.name + " , of type " + event.type , time : Date()})
+              this.afDatabase.object('user/'+ yy.ID +'/notifications/'+ this.arrDataId).set({uphoto : ev.photo , message : "New Event is added : "+ ev.name + " , of type " + ev.type , time : Date()})
             }
           }
 
@@ -79,8 +79,8 @@ export class EventsPage {
     }
 
     this.afAuth.authState.subscribe(auth =>{
-      this.afDatabase.object('user/'+ auth.uid+'/ownEvents/'+ this.event.name).set({email:this.event.email , name:this.event.name , photo:this.event.photo})
-      this.afDatabase.object('event/'+this.event.name).set(this.event)
+      this.afDatabase.object('user/'+ auth.uid+'/ownEvents/'+ ev.name).set({email: ev.email , name:ev.name , photo:ev.photo})
+      this.afDatabase.object('event/'+ ev.name).set(ev)
 
     });
 

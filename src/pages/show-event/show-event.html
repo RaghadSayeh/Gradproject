@@ -25,12 +25,12 @@
   <p class="bostyle"></p>
 
     <ion-list inset >
-        <ion-list-header>
+        <p>
             Registered names :
-          </ion-list-header>
-        <ion-item start *ngFor="let seq of evData" >
+        </p>
+        <button ion-item #first *ngFor="let seq of evData" (click)="scanCode(first)" >
           {{seq.name}}
-        </ion-item> 
+        </button> 
       </ion-list>
     
 </ion-content>

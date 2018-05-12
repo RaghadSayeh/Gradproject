@@ -40,6 +40,8 @@ import {NotePage} from '../pages/note/note';
 import {OthersPage} from '../pages/others/others';
 import { OwnEventsPage } from '../pages/own-events/own-events';
 import { ShowEventPage } from '../pages/show-event/show-event';
+import {NgxQRCodeModule} from 'ngx-qrcode2';
+import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -89,7 +91,8 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxQRCodeModule
     
   ],
   bootstrap: [IonicApp],
@@ -126,6 +129,7 @@ const firebaseConfig = {
     AngularFireAuth,
     AngularFireDatabase,
     StatusBar,
+    BarcodeScanner,
     UsersserviceProvider,
     SplashScreen,FileChooser,File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

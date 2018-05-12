@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
@@ -21,10 +21,15 @@ eventData = []
  uesrEventsData = []
  item1 : Observable<User>;
   itemRef : AngularFireObject<any>;
+  createdCode = null ;
+  userfname : string ;
+  userlname : string ;
+  qrData = null ;
   
   
   constructor ( public navCtrl: NavController,
     private afAuth: AngularFireAuth ,
+    private alertCtrl: AlertController,
     private afDatabase: AngularFireDatabase,
      public navParams: NavParams){ 
 
@@ -43,6 +48,11 @@ eventData = []
       if(data && data.email && data.uid){
        this.userData = this.afDatabase.object('user/'+ data.uid);
        this.item1 = this.userData.valueChanges();
+       this.itemRef = this.afDatabase.object('user/' + data.uid);
+       this.itemRef.snapshotChanges().subscribe(action => { 
+       this.userfname = action.payload.val().firstname;
+       this.userlname = action.payload.val().lastname; 
+       });
 
        
        this.afDatabase.list('/user/'+ data.uid+'/RegEvents/').valueChanges().subscribe(
@@ -73,6 +83,12 @@ eventData = []
       this.navCtrl.push(ProfilePage);
 
 
+  }
+
+  createCode(){
+    this.qrData = this.userfname + this.userlname ; 
+    this.createdCode = this.qrData ;
+  
   }
 
 }

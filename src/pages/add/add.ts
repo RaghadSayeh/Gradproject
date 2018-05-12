@@ -1,7 +1,7 @@
 import { Component ,Input,ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams ,ToastController} from 'ionic-angular';
 import { AngularFireDatabase,} from 'angularfire2/database';
-import {FirebaseListObservable} from 'angularfire2/database';
+import {FirebaseListObservable } from 'angularfire2/database';
 
 @IonicPage()
 @Component({

@@ -42,7 +42,9 @@
             <p>At {{item.time}} , On {{item.day}}/{{item.month}}/{{item.year}}</p>
             <p>In {{item.city}} , {{item.location}} </p>
             <p>Price : ${{item.price}}</p>
-            <button ion-button clear item-end (click)="unRegister(item , i)">UnRegister</button>
+            <button ion-button clear  (click)="unRegister(item , i)">UnRegister</button>
+            <button ion-button clear (click)="createCode()">Show Barcode</button>
+            
           </ion-item>
         </ion-list>
 
@@ -51,5 +53,11 @@
 </ng-container>
 </ng-container>
 
-
+<ion-card *ngIf="createdCode">
+  <ngx-qrcode [qrc-value]="createdCode">
+  </ngx-qrcode>
+  <ion-card-content>
+    <p>Value : {{createdCode }}</p>
+  </ion-card-content>
+</ion-card>
 </ion-content>

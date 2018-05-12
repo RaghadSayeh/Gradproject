@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Event } from '../../models/eventDet';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the ShowEventPage page.
@@ -17,6 +18,8 @@ import { Event } from '../../models/eventDet';
 })
 export class ShowEventPage {
 
+  buttonColor : string = "#ff66cc";
+  scannedCode = null ;
   evname : string ;
   evData = [] 
   evData1 = {} 
@@ -25,6 +28,7 @@ export class ShowEventPage {
 
   constructor(public navCtrl: NavController,
     private afDatabase: AngularFireDatabase,
+    private barcodeScanner : BarcodeScanner,
      public navParams: NavParams) {
 
     this.evname = this.navParams.get('eventName');
@@ -48,6 +52,14 @@ export class ShowEventPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShowEventPage');
+  }
+
+  scanCode(ionicButton) {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;
+      ionicButton.color =  'secondary';
+    })
+
   }
 
 }

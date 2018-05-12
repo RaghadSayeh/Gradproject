@@ -21,7 +21,6 @@
           <p>{{item.desc}}</p>
           <p>contact : {{item.email}}</p>
         </ion-item>
-      
       <ion-item>
         <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
         <h2>{{item.time}}</h2>
@@ -29,7 +28,6 @@
         <p>{{item.city}}</p>
         <p>{{item.location}}</p>
       </ion-item>
-    
         <ion-item >
         <span item-left>Attendence Max.Num : {{item.maxnumber}}</span>
         <button ion-button icon-left clear item-end [disabled]="item.maxnumber-item.regnumber == 0 " *ngIf="item.paid" (click)="openPrice(item , i)">
