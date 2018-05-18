@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Event } from '../../models/eventDet';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ModalPage } from '../modal/modal';
 
 /**
  * Generated class for the ShowEventPage page.
@@ -29,6 +30,7 @@ export class ShowEventPage {
   constructor(public navCtrl: NavController,
     private afDatabase: AngularFireDatabase,
     private barcodeScanner : BarcodeScanner,
+    private modalCtrl: ModalController,
      public navParams: NavParams) {
 
     this.evname = this.navParams.get('eventName');
@@ -60,6 +62,12 @@ export class ShowEventPage {
       ionicButton.color =  'secondary';
     })
 
+  }
+
+  showModal(){
+    
+    this.navCtrl.push(ModalPage , {'detEvent': this.evname , 'regEvent' : this.evData });
+      
   }
 
 }

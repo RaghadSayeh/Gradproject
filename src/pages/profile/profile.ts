@@ -91,4 +91,8 @@ eventData = []
   
   }
 
+  closeBar(){
+    this.createdCode = "";
+  }
+
 }

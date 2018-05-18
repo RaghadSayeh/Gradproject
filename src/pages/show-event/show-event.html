@@ -8,6 +8,8 @@
 
   <ion-navbar>
     <ion-title>{{evname}}</ion-title>
+
+    
   </ion-navbar>
 
 </ion-header>
@@ -22,7 +24,13 @@
   <p>Time : {{evData1.time}}</p>
   <p>Number of registered : {{evData1.regnumber}}</p>
   <p>Max Number of Attendence: {{evData1.maxnumber}}</p>
+
+  <button ion-button round block (click)="showModal()">
+      <ion-icon name="md-edit"></ion-icon>
+    Update</button>
   <p class="bostyle"></p>
+
+  
 
     <ion-list inset >
         <p>

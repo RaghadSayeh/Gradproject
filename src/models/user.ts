@@ -17,4 +17,5 @@ export interface User {
     todos: string [];
     ownEvents : string[];
     numbadge : number ;
+    userbadge : Number ; 
 }

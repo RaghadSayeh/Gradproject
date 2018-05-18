@@ -42,6 +42,7 @@ import { OwnEventsPage } from '../pages/own-events/own-events';
 import { ShowEventPage } from '../pages/show-event/show-event';
 import {NgxQRCodeModule} from 'ngx-qrcode2';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
+import { ModalPage } from '../pages/modal/modal';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcNNORf7VZEwC-ZdTMbaO1JF0n3cdBHsA",
@@ -80,6 +81,7 @@ const firebaseConfig = {
     ShowEventPage,
     InterestsPage,
     MyCalenderPage,
+    ModalPage,
     InterestsPage
   ],
   imports: [
@@ -120,6 +122,7 @@ const firebaseConfig = {
     EditnPage,
     FollowingPage,
     InterestsPage,
+    ModalPage,
     ShowEventPage,
     MyCalenderPage,
     AddPage

@@ -27,7 +27,8 @@ import {NotePage} from '../pages/note/note';
 import { InterestsPage } from '../pages/interests/interests';
 import {OthersPage} from '../pages/others/others';
 import { OwnEventsPage } from '../pages/own-events/own-events';
-import {ShowEventPage} from '../pages/show-event/show-event'
+import {ShowEventPage} from '../pages/show-event/show-event' ;
+import {ModalPage} from '../pages/modal/modal' ;
 
 @Component({
   templateUrl: 'app.html'

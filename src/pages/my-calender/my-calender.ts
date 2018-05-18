@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
 import * as moment from 'moment';
-import {FirebaseObjectObservable} from 'angularfire2/database';
+import {FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
 import {EditnPage} from '../editn/editn';
@@ -37,7 +37,6 @@ calendar ={
    this.afDatabase.list("/todos/").valueChanges().subscribe(
     _data => {
       this.arrData = _data ; 
-     // this.arrDataId = this.arrData.length ;
      console.log(this.arrData);
     }
   );
@@ -81,7 +80,7 @@ calendar ={
     let end=moment(event.endTime).format('LLLL');
 
      let alert=this.alerCtrl.create({
-       title: '' +event.title,
+       title: event.title,
        subTitle :'From: '+ start +'<br>To: ' + end,
        buttons: ['Ok']
      });

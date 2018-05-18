@@ -119,7 +119,7 @@ export class SignupPage {
         user.interests = data ;
         user.followers = 0 ;
         user.following = 0 ;
-        user.badge = 0 ;
+        user.userbadge = 0 ;
         console.log('Checkbox data:', data);
         this.testCheckboxOpen = false;
         this.testCheckboxResult = data;
