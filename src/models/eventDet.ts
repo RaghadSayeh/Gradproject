@@ -9,7 +9,7 @@ export interface Event {
     month: string;
     year: string;
     location : string;
-    city: string;
+    address: string;
     photo : URL ;
     paid: boolean ;
     price: string;  

@@ -25,11 +25,11 @@
         <ion-icon ios="ios-time" md="md-time" item-left large ></ion-icon>
         <h2>{{item.time}}</h2>
         <p>On {{item.day}} {{item.month}} {{item.year}} </p>
-        <p>{{item.city}}</p>
-        <p>{{item.location}}</p>
+        <p>{{item.address}}</p>
+        <p>Attendence Max.Num : {{item.maxnumber}}</p>
       </ion-item>
         <ion-item >
-        <span item-left>Attendence Max.Num : {{item.maxnumber}}</span>
+        <button ion-button icon-left (click)= "showLocation(item.location)" ><ion-icon name="locate"></ion-icon> show location</button>
         <button ion-button icon-left clear item-end [disabled]="item.maxnumber-item.regnumber == 0 " *ngIf="item.paid" (click)="openPrice(item , i)">
           <ion-icon name="arrow-dropright-circle"></ion-icon>
           {{item.price}}

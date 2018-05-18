@@ -210,6 +210,8 @@ Logout(){
  this.navCtrl.setRoot(WelcomePage);
 }
 
+showLocation(locate : string ){
 
+}
 
 }

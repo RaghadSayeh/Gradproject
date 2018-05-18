@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FirebaseObjectObservable  } from 'angularfire2/database';
+//import { FirebaseObjectObservable  } from 'angularfire2/database';
 import { AngularFireObject }  from 'angularfire2/database';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { User } from '../../models/user';
